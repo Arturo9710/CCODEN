@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/empleados',[ControllerEmpleados::class,'index'])->name('empleados');
+Route::get('/empleados2',[ControllerEmpleados::class,'index2'])->name('empleados2');
+Route::get('/agenda',[ControllerEmpleados::class,'agenda'])->name('agenda');
