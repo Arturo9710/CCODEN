@@ -15,4 +15,7 @@ class ControllerEmpleados extends Controller
     public function agenda(){
         return view('agenda');
     }
+    public function entrevistas(){
+        return view('entrevistas');
+    }
 }
