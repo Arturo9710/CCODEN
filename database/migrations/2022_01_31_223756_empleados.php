@@ -13,7 +13,7 @@ class Empleados extends Migration
      */
     public function up()
     {
-        Schema::create('empleados', function (Blueprint $table) {
+        Schema::create('empleados_models', function (Blueprint $table) {
             $table->bigIncrements('id_empleado');
             $table->string('alias',100);
             $table->string('nombre',100);
@@ -23,8 +23,8 @@ class Empleados extends Migration
             $table->date('fecha_nacimiento');
             $table->string('genero',20);
             $table->string('foto',200);
-            $table->rememberToken();
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
