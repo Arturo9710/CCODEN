@@ -4,11 +4,20 @@
         <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">ALTA EMPLEADOS</h1>
+                                <h1 class="h4 text-gray-900 mb-4">CURSO</h1>
                                 <hr> 
                             </div>
                             <form action="{{route('guardarempleado')}}" method ="POST" class="user">
                                          {{csrf_field()}}
+                                         <div class="form-group">
+                                <label for="nombre">ID Curso:
+                                    @if($errors->first('id_curso'))
+                                    <p class = 'text-danger'>{{$errors->first('id_curso')}}</p>
+                                    @endif
+                                </label>
+                                    <input type="text" name="id_curso" class="form-control form-control-user" id="id_curso" 
+                                       value="{{old('id_curso')}}" placeholder="ID Curso">
+                                </div>
                                 <div class="form-group">
                                 <label for="nombre">Alias:
                                     @if($errors->first('id_empleado'))

@@ -44,39 +44,31 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            
+
             <li class="nav-item">
-                <a class="nav-link" href={{ route('agenda') }}>
-                    <i class="fas fa-fw fa-chart-area"></i>
+                <a class="nav-link" href={{ route('empleados') }}>
+                    <i class="bi bi-people-fill"></i>
                     <span>Empleados</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href={{ route('entrevistas') }}>
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Entrevistas</span></a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href={{ route('agenda') }}>
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Ir agenda</span></a>
+                    <i class="bi bi-people-fill"></i>
+                    <span>Agenda</span></a>
             </li>
+
             <li class="nav-item">
-                <a class="nav-link" href={{ route('agenda') }}>
-                    <i class="fas fa-fw fa-chart-area"></i>
+                <a class="nav-link" href={{ route('entrevista') }}>
+                    <i class="bi bi-people-fill"></i>
+                    <span>Entrevista</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href={{ route('curso') }}>
+                    <i class="bi bi-people-fill"></i>
                     <span>Curso</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href={{ route('empleados2') }}>
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Registro Personal</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href={{ route('empleados2') }}>
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Productividad</span></a>
-            </li>
-
-
+    
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -86,11 +78,7 @@
             </div>
 
             <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
+            
 
         </ul>
         <!-- End of Sidebar -->
@@ -129,7 +117,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
