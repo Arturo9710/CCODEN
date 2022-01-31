@@ -46,18 +46,23 @@
                                     value="{{old('apellido_m')}}"  placeholder="Segundo Apellido">
                                 </div>
                                 <div class="form-group">
-                                <label for="nombre">Teléfono:
+                                <label for="telefono">Teléfono:
                                     @if($errors->first('telefono'))
                                     <p class = 'text-danger'>{{$errors->first('telefono')}}</p>
                                     @endif
                                 </label>
-                                    <input type="text" name="telefono" class="form-control form-control-user" id="telefono"
+                                    <input type="number" name="telefono" class="form-control form-control-user" id="telefono"
                                     value="{{old('telefono')}}"    placeholder="Teléfono">
                                 </div>
                                 <div class="form-group">
-                                <label for="nombre">Fecha De Nacimiento:
-                                    @if($errors->first('fecha_nacimeinto'))
-                                    <p class = 'text-danger'>{{$errors->first('fecha_nacimeinto')}}</p>
+                                    <label for="foto">Foto Perfil:</label>
+                                    <input type="file" name="foto" form-control-user" id="foto"
+                                        value="">
+                                </div>
+                                <div class="form-group">
+                                <label for="fecha_nacimiento">Fecha De Nacimiento:
+                                    @if($errors->first('fecha_nacimiento'))
+                                    <p class = 'text-danger'>{{$errors->first('fecha_nacimiento')}}</p>
                                     @endif
                                 </label>
                                     <input type="date" name="fecha_nacimiento" class="form-control form-control-user" id="fecha_nacimeinto"
@@ -72,6 +77,7 @@
                                 <input type="radio" id="sexo2" name="genero" value = "F" class="custom-control-input">
                                 <label class="custom-control-label" for="sexo2">Femenino</label>
                                 </div>
+                                
                                 <div class="row">
                                 <div class="col-xs-10 col-md-10"><input type="submit" value="Guardar" class="btn btn-primary btn-user btn-block"
                                    title="Guardar datos ingresados"></div>
