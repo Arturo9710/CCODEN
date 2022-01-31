@@ -11,9 +11,9 @@ Route::get('/', function () {
 });
 
 //EMPLEADOS
-Route::get('/empleados2',[ControllerEmpleados::class,'index2'])->name('empleados2');
 Route::get('empleados',[ControllerEmpleados::class,'empleados'])->name('empleados');
 Route::post('guardarempleado',[ControllerEmpleados::class,'guardarempleado'])->name('guardarempleado');
+Route::get('eloquent',[ControllerEmpleados::class,'eloquent'])->name('eloquent');
 
 //AGENDA
 Route::get('agenda',[ControllerAgenda::class,'agenda'])->name('agenda');
