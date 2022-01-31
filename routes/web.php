@@ -5,6 +5,7 @@ use App\Http\Controllers\ControllerEmpleados;
 use App\Http\Controllers\ControllerAgenda;
 use App\Http\Controllers\ControllerEntrevista;
 use App\Http\Controllers\ControllerCurso;
+use App\Http\Controllers\ControllerProductividad;
 
 Route::get('/', function () {
     return view('index');
@@ -25,4 +26,10 @@ Route::post('guardarentrevista',[ControllerEntrevista::class,'guardarentrevista'
 
 //CURSO
 Route::get('curso',[ControllerCurso::class,'curso'])->name('curso');
-Route::post('curso',[ControllerCurso::class,'guardarcurso'])->name('guardarcurso');
+Route::post('guardacurso',[ControllerCurso::class,'guardacurso'])->name('guardacurso');
+
+//PRODUCTIVIDAD
+Route::get('productividad',[ControllerProductividad::class,'productividad'])->name('productividad');
+Route::post('guardarproductividad',[ControllerProductividad::class,'guardarproductividad'])->name('guardarproductividad');
+
+
