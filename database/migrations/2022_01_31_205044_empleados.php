@@ -19,9 +19,9 @@ class Empleados extends Migration
             $table->string('nombre',100);
             $table->string('apellido_p',100);
             $table->string('apellido_m',100);
-            $table->integer('telefono');
+            $table->string('telefono',10);
             $table->date('fecha_nacimiento');
-            $table->string('genero',2);
+            $table->string('genero',20);
             $table->string('foto',200);
             $table->rememberToken();
             $table->timestamps();
