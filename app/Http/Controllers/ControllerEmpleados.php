@@ -13,8 +13,8 @@ class ControllerEmpleados extends Controller
     }
     public function eloquent(){
         $empleados = new EmpleadosModel;
-        $empleados->id_empleado = 3;
-        $empleados->alias = "preuba";
+        $empleados->id_empleado=1;
+        $empleados->alias = "prueba";
         $empleados->nombre = "Arturo";
         $empleados->apellido_p = "Reyes";
         $empleados->apellido_m = "German";
