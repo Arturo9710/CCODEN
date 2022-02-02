@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\empleados;
-
+use DataTables;
 
 class ControllerEmpleados extends Controller
 {
@@ -49,17 +49,19 @@ class ControllerEmpleados extends Controller
         $empleados->foto =$request->foto;
         $empleados->save();
 
-        return view('mensajes')
-        ->with('proceso',"ALTA EMPLEADOS")
-        ->with('mensaje',"El Empleado $request->nombre $request->apellido_p ha sido dadode alta correctamente");   
+        return redirect('reporteempleado');
+        // return view('mensajes')
+        // ->with('proceso',"ALTA EMPLEADOS")
+        // ->with('mensaje',"El Empleado $request->nombre $request->apellido_p ha sido dadode alta correctamente");   
     }
 
     public function reporteempleado(){
-        $consulta = empleados::withTrashed()->select(['id_empleado','alias','nombre',
-        'apellido_p','telefono','genero','foto','deleted_at'])
+        $empleados = empleados::withTrashed()->select(['id_empleado','alias','nombre',
+        'apellido_p','apellido_m','telefono','genero','foto','deleted_at'])
         ->orderBy('empleados.nombre')
         ->get();
-        return view ('reporteempleado')->with('consulta',$consulta);
+        
+        return view ('reporteempleado')->with('empleados',$empleados);
     }
 
     public function desactivarempleado($id_empleado){

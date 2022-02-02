@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    @yield('css')
     <title>Dashboard | @yield('titulo') </title>
 
     <!-- Custom fonts for this template-->
@@ -39,14 +40,29 @@
             </a>
 
             <!-- Divider -->
-            
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
 
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-users"></i>
+                    <span>Empleados</span>
+                </a>
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">CCODEN Empleados:</h6>
+                        <a class="collapse-item" href={{ route('empleados') }}>Nuevo Empleado</a>
+                        <a class="collapse-item active" href={{ route('reporteempleado') }}>Registro Empleados</a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item">
-                <a class="nav-link" href={{ route('empleados') }}>
+                <a class="nav-link">
                     <i class="bi bi-people-fill"></i>
                     <span>Empleados</span></a>
             </li>
@@ -74,7 +90,7 @@
                     <i class="bi bi-people-fill"></i>
                     <span>Productividad</span></a>
             </li>
-    
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -84,7 +100,7 @@
             </div>
 
             <!-- Sidebar Message -->
-            
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -92,7 +108,7 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             @yield('content')
-           
+
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -152,6 +168,7 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
 
+    @yield('js')
 </body>
 
 </html>
