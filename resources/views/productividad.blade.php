@@ -7,7 +7,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">Productividad</h1>
                                 <hr> 
                             </div>
-                            <form action="{{route('guardarcurso')}}" method ="POST" class="user">
+                            <form action="{{route('guardarproductividad')}}" method ="POST" class="user">
                                          {{csrf_field()}}
                                 <div class="form-group">
                                 <label for="nombre">Alias:

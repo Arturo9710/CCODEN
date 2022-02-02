@@ -9,14 +9,23 @@
                             </div>
                             <form action="{{route('guardarempleado')}}" method ="POST" class="user">
                                          {{csrf_field()}}
-                                <div class="form-group">
-                                <label for="nombre">Alias:
+                                         <div class="form-group">
+                                <label for="nombre">ID Empleado:
                                     @if($errors->first('id_empleado'))
                                     <p class = 'text-danger'>{{$errors->first('id_empleado')}}</p>
                                     @endif
                                 </label>
                                     <input type="text" name="id_empleado" class="form-control form-control-user" id="id_empleado" 
-                                       value="{{old('id_empleado')}}" placeholder="Alias">
+                                       value="{{$idsigue}}" placeholder="ID Empleado">
+                                </div>
+                                <div class="form-group">
+                                <label for="nombre">Alias:
+                                    @if($errors->first('alias'))
+                                    <p class = 'text-danger'>{{$errors->first('alias')}}</p>
+                                    @endif
+                                </label>
+                                    <input type="text" name="alias" class="form-control form-control-user" id="alias" 
+                                       value="{{old('alias')}}" placeholder="Alias">
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre">Nombre:

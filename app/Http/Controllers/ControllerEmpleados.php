@@ -3,40 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\EmpleadosModel;
+use App\Models\empleados;
+
 
 class ControllerEmpleados extends Controller
 {
     
     public function empleados(){
-        return view('empleados');
+        $consulta = empleados::orderBy('id_empleado','DESC')
+                             ->take(1)->get();
+
+        $cuantos = count($consulta);
+        if($cuantos==0)
+        {
+            $idsigue = 1;
+        }
+        else {
+            $idsigue = $consulta[0]->id_empleado + 1;
+        }
+        return view ('empleados')
+               ->with('idsigue',$idsigue);
+       
     }
-    public function eloquent(){
-        // $empleados = new EmpleadosModel();
-        // $empleados->id_empleado= 2;
-        // $empleados->alias = "daa";
-        // $empleados->nombre = "ds";
-        // $empleados->apellido_p ="dad";
-        // $empleados->apellido_m = "ds";
-        // $empleados->telefono = "7224495978";
-        // $empleados->fecha_nacimiento = "2020-12-12";
-        // $empleados->genero = "masculino";
-        // $empleados->foto ="jj.jpg";
-        // $empleados->save();
-
-        // echo "Todo Chido";   
-        
-
-
-    //     $empleados = EmpleadosModel::find(1);
-    //     $empleados->delete();
-    //    return "Operacion realizada";
-
-    }
+   
     public function guardarempleado(Request $request){
     
         $this->validate($request,[
-            'id_empleado' => 'required|regex:/^[E][M][P][-][0-9]{5}$/',
+            'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -44,7 +37,7 @@ class ControllerEmpleados extends Controller
             'fecha_nacimiento' => 'required|date',
             
         ]);
-        $empleados = new EmpleadosModel;
+        $empleados = new empleados;
         $empleados->id_empleado= $request->id_empleado;
         $empleados->alias = $request->alias;
         $empleados->nombre = $request->nombre;
@@ -56,8 +49,25 @@ class ControllerEmpleados extends Controller
         $empleados->foto =$request->foto;
         $empleados->save();
 
-        echo "Todo Chido";
+        return view('mensajes')
+        ->with('proceso',"ALTA EMPLEADOS")
+        ->with('mensaje',"El Empleado $request->nombre $request->apellido_p ha sido dadode alta correctamente");   
+    }
 
-        
+    public function reporteempleado(){
+        $consulta = empleados::withTrashed()->select(['id_empleado','alias','nombre',
+        'apellido_p','telefono','genero','foto','deleted_at'])
+        ->orderBy('empleados.nombre')
+        ->get();
+        return view ('reporteempleado')->with('consulta',$consulta);
+    }
+
+    public function desactivarempleado($id_empleado){
+        $empleados = empleados::find($id_empleado);
+        $empleados->delete();
+        return view('mensajes')
+        ->with('proceso',"DESACTIVAR EMPLEADOS")
+        ->with('mensaje',"El Empleado  ha sido desactivado correctamente");
+     
     }
 }
