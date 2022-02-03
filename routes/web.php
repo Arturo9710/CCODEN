@@ -16,6 +16,10 @@ Route::get('empleados',[ControllerEmpleados::class,'empleados'])->name('empleado
 Route::post('guardarempleado',[ControllerEmpleados::class,'guardarempleado'])->name('guardarempleado');
 Route::get('reporteempleado',[ControllerEmpleados::class,'reporteempleado'])->name('reporteempleado');
 Route::get('desactivarempleado/{id_empleado}',[ControllerEmpleados::class,'desactivarempleado'])->name('desactivarempleado');
+Route::get('activarempleado/{id_empleado}',[ControllerEmpleados::class,'activarempleado'])->name('activarempleado');
+Route::get('borraempleado/{id_empleado}',[ControllerEmpleados::class,'borraempleado'])->name('borraempleado');
+Route::get('modificaempleado/{id_empleado}',[ControllerEmpleados::class,'modificaempleado'])->name('modificaempleado');
+Route::post('guardacambios',[ControllerEmpleados::class,'guardacambios'])->name('guardacambios');
 
 //AGENDA
 Route::get('agenda',[ControllerAgenda::class,'agenda'])->name('agenda');

@@ -57,16 +57,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">CCODEN Empleados:</h6>
                         <a class="collapse-item" href={{ route('empleados') }}>Nuevo Empleado</a>
-                        <a class="collapse-item active" href={{ route('reporteempleado') }}>Registro Empleados</a>
+                        <a class="collapse-item active" href={{ route('reporteempleado') }}>Reporte Empleados</a>
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link">
-                    <i class="bi bi-people-fill"></i>
-                    <span>Empleados</span></a>
-            </li>
-
             <li class="nav-item">
                 <a class="nav-link" href={{ route('agenda') }}>
                     <i class="bi bi-people-fill"></i>

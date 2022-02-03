@@ -21,6 +21,5 @@ class empleados extends Model
         'telefono',
         'fecha_nacimiento',
         'genero',
-        'foto'
-    ];      
+        'foto'];      
 }
