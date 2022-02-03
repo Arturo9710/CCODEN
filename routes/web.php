@@ -36,5 +36,3 @@ Route::post('guardacurso',[ControllerCurso::class,'guardacurso'])->name('guardac
 //PRODUCTIVIDAD
 Route::get('productividad',[ControllerProductividad::class,'productividad'])->name('productividad');
 Route::post('guardarproductividad',[ControllerProductividad::class,'guardarproductividad'])->name('guardarproductividad');
-
-
