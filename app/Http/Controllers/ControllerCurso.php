@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ControllerCurso extends Controller
 {
     public function curso(){
-        return view('curso');
+        return view('curso.curso');
     }
     public function guardacurso(Request $request){
     

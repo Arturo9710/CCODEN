@@ -8,7 +8,7 @@ class ControllerAgenda extends Controller
 {
 
     public function agenda(){
-        return view('agenda');
+        return view('agenda.agenda');
     }
     public function guardaragenda(Request $request){
     

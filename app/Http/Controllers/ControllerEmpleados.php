@@ -22,7 +22,7 @@ class ControllerEmpleados extends Controller
         else {
             $idsigue = $consulta[0]->id_empleado + 1;
         }
-        return view ('empleados')
+        return view ('empleados.empleados')
                ->with('idsigue',$idsigue);
        
     }
@@ -76,7 +76,7 @@ class ControllerEmpleados extends Controller
         ->orderBy('empleados.nombre')
         ->get();
         
-        return view ('reporteempleado')->with('empleados',$empleados);
+        return view ('empleados.reporteempleado')->with('empleados',$empleados);
     }
 
     public function desactivarempleado($id_empleado){
@@ -108,7 +108,7 @@ class ControllerEmpleados extends Controller
         'apellido_p','apellido_m','telefono','genero','foto','fecha_nacimiento')
         ->where('id_empleado',$id_empleado)
         ->get();
-        return view ('modificaempleado')
+        return view ('empleados.modificaempleado')
         ->with('empleados',$empleados[0]);
     }
 

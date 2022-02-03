@@ -76,7 +76,7 @@
                 </div>
                 <label for="dni">Género:</label>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="sexo1" name="genero" value="M" class="custom-control-input" checked="">
+                    <input type="radio" id="sexo1" name="genero" value="M" class="custom-control-input" check>
                     <label class="custom-control-label" for="sexo1">Masculino</label>
                 </div>
                 <div class="custom-control custom-radio">

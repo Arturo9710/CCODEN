@@ -8,7 +8,7 @@ class ControllerEntrevista extends Controller
 {
 
     public function entrevista(){
-        return view('entrevista');
+        return view('entrevistas.entrevista');
     }
     public function guardarentrevista(Request $request){
     
