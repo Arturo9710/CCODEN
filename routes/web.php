@@ -24,6 +24,7 @@ Route::post('guardacambios',[ControllerEmpleados::class,'guardacambios'])->name(
 //AGENDA
 Route::get('agenda',[ControllerAgenda::class,'agenda'])->name('agenda');
 Route::post('guardaragenda',[ControllerAgenda::class,'guardaragenda'])->name('guardaragenda');
+Route::get('reporteagenda',[ControllerAgenda::class,'reporteagenda'])->name('reporteagenda');
 
 //ENTREVISTAS
 Route::get('entrevista',[ControllerEntrevista::class,'entrevista'])->name('entrevista');

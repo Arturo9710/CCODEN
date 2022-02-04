@@ -22,7 +22,7 @@ class Agenda extends Migration
             $table->string('apellido_p',100);
             $table->string('apellido_m',100);
             $table->string('telefono',20);
-            $table->date('fecha_nacimiento');
+            
             $table->datetime('hora');
             $table->date('fecha');
             $table->string('publicidad',100);
