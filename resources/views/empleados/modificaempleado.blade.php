@@ -1,9 +1,10 @@
 @extends('layout.plantilla')
+
 @section('content')
 
     <div class="col-lg-7" style="
-                        margin: 0 auto;
-                    ">
+                                        margin: 0 auto;
+                                    ">
         <div class="p-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">EDITA EMPLEADO</h1>
@@ -105,7 +106,8 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-10 col-md-10"><input type="submit" value="Guardar"
-                            class="btn btn-primary btn-user btn-block" title="Guardar datos ingresados"></div>
+                            class="btn btn-primary btn-user btn-block" title="Guardar datos ingresados">
+                    </div>
                 </div>
         </div>
     </div>

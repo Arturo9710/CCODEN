@@ -6,23 +6,23 @@
 @endsection
 @section('content')
     <div class="container">
-        <h1>REPORTE EMPLEADOS</h1>
+        <h1>Reporte Agenda</h1>
         <br>
-        <a href="{{ route('empleados') }}">
-            <button type="button" class="btn btn-success">Alta Empleado</button>
+        <a href="{{ route('guardaragenda') }}">
+            <button type="button" class="btn btn-success">Nueva Agenda</button>
         </a>
         <br>
         <br>
         <div class="card shadow mb-1">
             <div class="card-header py-1">
-                <h6 class="m-0 font-weight-bold text-primary">REPORTE EMPLEADOS</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Agenda Datos</h6>
             </div>
             @if (Session::has('mensaje'))
                 <div class="alert alert-success">{{ Session::get('mensaje') }}</div>
             @endif
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table  table-striped shadow-lg mt-4" id="dataTableEmpleados" width="100%" cellspacing="0">
+                    <table class="table  table-striped shadow-lg mt-4" id="dataTableAgenda" width="100%" cellspacing="0">
                         <thead class="bg-primary text-white">
                             <tr>
                                 <th>#</th>
@@ -37,10 +37,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($empleados as $empleado)
+                            @foreach ($agenda as $a)
                                 <tr>
-                                    {{-- {{ dd($empleado) }} --}}
-                                    <td>{{ $empleado->id_empleado }}</td>
+                                    {{-- {{ dd($a) }} --}}
+                                    {{-- <td>{{ $a->id_empleado }}</td>
                                     <td>{{ $empleado->alias }}</td>
                                     <td>{{ $empleado->nombre }}</td>
                                     <td>{{ $empleado->apellido_p }}</td>
@@ -66,7 +66,7 @@
                                                 href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
                                                 <button type="button" class="btn btn-danger">Desactivar</button>
                                             </a>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -79,7 +79,7 @@
 
                     <script>
                         $(document).ready(function() {
-                            $('#dataTableEmpleados').DataTable();
+                            $('#dataTableAgenda').DataTable();
                         });
                     </script>
                 @endsection
