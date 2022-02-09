@@ -67,6 +67,7 @@ class ControllerAgenda extends Controller
         $agenda = agenda::find($id_agenda);
         $agenda->delete();
         Session::flash('mensaje',"Agenda Desactivada");
+       
         return redirect()->route('reporteagenda');
 
     }

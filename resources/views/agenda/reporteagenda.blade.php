@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
 @endsection
 @section('titulo', 'Agenda Reportes')
 @section('content')
@@ -10,7 +11,8 @@
         <h1>Reporte Agenda</h1>
         <br>
         <a href="{{ route('agenda') }}">
-            <button type="button" class="btn btn-success">Ndueva Agenda</button>
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Nueva Agenda</button>
         </a>
         <br>
         <br>
@@ -50,7 +52,7 @@
                                     <td>{{ $a->hora }}</td>
                                     <td>{{ $a->publicidad }}</td>
 
-                                    <td style="display:flex;">
+                                    <td>
                                         <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
                                             class="btn btn-info">Editar
                                         </a>
@@ -75,10 +77,15 @@
                     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
                     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
                     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
 
                     <script>
                         $(document).ready(function() {
-                            $('#dataTableAgenda').DataTable();
+                            $('#dataTableAgenda').DataTable({
+                                responsive: true,
+
+                            });
                         });
                     </script>
                 @endsection

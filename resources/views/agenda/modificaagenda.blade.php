@@ -80,8 +80,8 @@
                             <p class='text-danger'>{{ $errors->first('hora') }}</p>
                         @endif
                     </label>
-                    <input type="datetime-local" name="hora" class="form-control form-control-user" id="hora"
-                        value="{{ $agenda->alias }}">
+                    <input type="time" name="hora" class="form-control form-control-user" id="hora"
+                        value="{{ $agenda->hora }}">
                 </div>
 
                 <div class="form-group">
