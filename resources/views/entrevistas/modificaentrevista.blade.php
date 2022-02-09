@@ -5,10 +5,10 @@
                 margin: 0 auto;">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">ENTREVISTA</h1>
+                                <h1 class="h4 text-gray-900 mb-4">MODIFICA ENTREVISTA</h1>
                                 <hr> 
                             </div>
-                            <form action="{{route('guardarentrevista')}}" method ="POST" class="user">
+                            <form action="{{route('guardacambios')}}" method ="POST" class="user">
                                          {{csrf_field()}}
                                 <div class="form-group">
                                 <label for="nombre">ID Entrevista:
@@ -17,7 +17,7 @@
                                     @endif
                                 </label>
                                     <input type="text" name="id_entrevista" class="form-control form-control-user" id="id_entrevista" 
-                                       value="{{$idsigue}}" readonly = 'readonly' placeholder="ID">
+                                       value="{{$entrevista->id_entrevista}}" readonly = 'readonly' placeholder="ID">
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre">Nombre Agenda:
@@ -26,7 +26,7 @@
                                     @endif
                                 </label>
                                     <input type="text" name="nombre_agenda" class="form-control form-control-user" id="nombre_agenda"
-                                    value="{{old('nombre_agenda')}}"   placeholder="Nombre Agenda">
+                                    value="{{$entrevista->nombre_agenda}}"   placeholder="Nombre Agenda">
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre">Edad:
@@ -35,7 +35,7 @@
                                     @endif
                                 </label>
                                     <input type="text" name="edad" class="form-control form-control-user" id="edad"
-                                    value="{{old('edad')}}"  placeholder="Edad">
+                                    value="{{$entrevista->edad}}"  placeholder="Edad">
                                 </div>
                                 <div class="form-group">
                                 <label for="nombre">Citado Por:
@@ -44,15 +44,16 @@
                                     @endif
                                 </label>
                                     <input type="text" name="citado" class="form-control form-control-user" id="citado"
-                                    value="{{old('citado')}}"  placeholder="Citado Por">
+                                    value="{{$entrevista->citado}}"  placeholder="Citado Por">
                                 </div>
                                 <div class="form-group">
                                 <label for="publicidad">Publicidad:</label>
                                 <select name = 'publicidad' class="custom-select">
-                                <option selected="">Selecciona un Publicidad</option>
+                                <option value="{{$entrevista->publicidad}}">{{$entrevista->publicidad}}</option>
                                 <option >Facebook</option>
                                 <option >Cartel</option>
-                                <option">Propaganda</option>
+                                <option>Propaganda</option>
+                                
                                </select>
                                </div>
                                 <div class="form-group">
@@ -62,12 +63,12 @@
                                     @endif
                                 </label>
                                     <input type="datetime-local" name="hora" class="form-control form-control-user" id="hora"
-                                    value="{{old('hora')}}"   placeholder="Hora">
+                                    value="{{$entrevista->hora}}"   placeholder="Hora">
                                 </div>
                                 <div class="form-group">
                                 <label for="oficina">Oficina:</label>
                                 <select name = 'oficina' class="custom-select">
-                                <option selected="">Seleccione Oficina</option>
+                                <option value="{{$entrevista->oficina}}">{{$entrevista->oficina}}</option>
                                 <option >103</option>
                                 <option >104</option>
                                 <option >105</option>
@@ -76,14 +77,25 @@
                                <div class="row">
                                <div class="col-xs-6 col-sm-6 col-md-6">
                                <label for="dni">Status:</label>
+                               @if($entrevista->status=='R')
                                <div class="custom-control custom-radio">
                                <input type="radio" id="status1" name="status"  value = "A" class="custom-control-input">
+                               <label class="custom-control-label" for="status1">Aceptado</label>
+                               </div>
+                               <div class="custom-control custom-radio">
+                               <input type="radio" id="status2" name="status" value = "R" class="custom-control-input" checked="">
+                               <label class="custom-control-label" for="status2">Rechazado</label>
+                               </div>
+                               @else
+                               <div class="custom-control custom-radio">
+                               <input type="radio" id="status1" name="status"  value = "A" class="custom-control-input" checked="">
                                <label class="custom-control-label" for="status1">Aceptado</label>
                                </div>
                                <div class="custom-control custom-radio">
                                <input type="radio" id="status2" name="status" value = "R" class="custom-control-input">
                                <label class="custom-control-label" for="status2">Rechazado</label>
                                </div>
+                               @endif
                                </div>
                                </div>
                                <hr>
