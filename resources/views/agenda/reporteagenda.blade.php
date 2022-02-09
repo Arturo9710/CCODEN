@@ -4,12 +4,13 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 @endsection
+@section('titulo', 'Agenda Reportes')
 @section('content')
     <div class="container">
         <h1>Reporte Agenda</h1>
         <br>
-        <a href="{{ route('guardaragenda') }}">
-            <button type="button" class="btn btn-success">Nueva Agenda</button>
+        <a href="{{ route('agenda') }}">
+            <button type="button" class="btn btn-success">Ndueva Agenda</button>
         </a>
         <br>
         <br>
@@ -26,47 +27,45 @@
                         <thead class="bg-primary text-white">
                             <tr>
                                 <th>#</th>
+                                <th>Seguimiento</th>
                                 <th>Alias</th>
                                 <th>Nombre</th>
                                 <th>Apellido Paterno</th>
                                 <th>Apellido Materno</th>
-                                <th>Telefono</th>
-                                <th>Genero</th>
-                                <th>Foto Empleado</th>
+                                <th>Hora</th>
+                                <th>Publicidad</th>
                                 <th>Operaciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($agenda as $a)
                                 <tr>
-                                    {{-- {{ dd($a) }} --}}
-                                    {{-- <td>{{ $a->id_empleado }}</td>
-                                    <td>{{ $empleado->alias }}</td>
-                                    <td>{{ $empleado->nombre }}</td>
-                                    <td>{{ $empleado->apellido_p }}</td>
-                                    <td>{{ $empleado->apellido_m }}</td>
-                                    <td>{{ $empleado->telefono }}</td>
-                                    <td>{{ $empleado->genero }}</td>
-                                    <td><img src="{{ asset('archivos/' . $empleado->foto) }}" height=50 width=50></td>
+
+                                    <td>{{ $a->id_agenda }}</td>
+                                    <td>{{ $a->seguimiento }}</td>
+                                    <td>{{ $a->alias }}</td>
+                                    <td>{{ $a->nombre }}</td>
+                                    <td>{{ $a->apellido_p }}</td>
+                                    <td>{{ $a->apellido_m }}</td>
+                                    <td>{{ $a->hora }}</td>
+                                    <td>{{ $a->publicidad }}</td>
+
                                     <td style="display:flex;">
-                                        <a href="{{ route('modificaempleado', ['id_empleado' => $empleado->id_empleado]) }}"
+                                        <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
                                             class="btn btn-info">Editar
                                         </a>
-                                        @if ($empleado->deleted_at)
-                                            <a
-                                                href="{{ route('activarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
+                                        @if ($a->deleted_at)
+                                            <a href="{{ route('activa_agenda', ['id_agenda' => $a->id_agenda]) }}">
                                                 <button type="button" class="btn btn-warning">Activar</button>
                                             </a>
-                                            <a
-                                                href="{{ route('borraempleado', ['id_empleado' => $empleado->id_empleado]) }}">
+                                            <a href="{{ route('borraAgenda', ['id_agenda' => $a->id_agenda]) }}">
                                                 <button type="button" class="btn btn-secondary">Borrar</button>
                                             </a>
                                         @else
-                                            <a
-                                                href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
+                                            <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
                                                 <button type="button" class="btn btn-danger">Desactivar</button>
                                             </a>
-                                        @endif --}}
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

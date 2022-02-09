@@ -151,4 +151,5 @@ class ControllerEmpleados extends Controller
         ha sido modificado correctaemente");
         return redirect()->route('reporteempleado');
     }
+    
 }

@@ -19,9 +19,7 @@ class agenda extends Model
         'nombre','apellido_p',
         'apellido_m',
         'telefono',
-        'fecha_nacimiento',
         'hora',
-        'dia',
         'publicidad',
         'contesto',
         'empleado_id'];

@@ -1,18 +1,24 @@
 @extends('layout.plantilla')
-@section('titulo', 'Agenda')
+@section('titulo', 'Modifica Agenda')
 @section('content')
-
-    <div class="col-lg-7"
-        style="
-                                                                                                                            margin: 0 auto;">
+    <div class="col-lg-7" style="margin: 0 auto;">
         <div class="  p-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">AGENDA</h1>
                 <hr>
             </div>
 
-            <form action="{{ route('guardaragenda') }}" method="POST" class="user">
+            <form action="{{ route('guardacambiosAgenda') }}" method="POST" class="user">
                 {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="nombre">Id agenda:
+                        @if ($errors->first('id_agenda'))
+                            <p class='text-danger'>{{ $errors->first('id_agenda') }}</p>
+                        @endif
+                    </label>
+                    <input type="text" name="id_agenda" class="form-control form-control-user" id="id_agenda"
+                        value="{{ $agenda->id_agenda }}">
+                </div>
 
                 <div class="form-group">
                     <label for="seguimiento">Seguimiento:
@@ -21,7 +27,7 @@
                         @endif
                     </label>
                     <input type="text" name="seguimiento" class="form-control form-control-user" id="seguimiento"
-                        value="{{ old('seguimiento') }}" placeholder="Seguimiento">
+                        value="{{ $agenda->seguimiento }}" placeholder="Seguimiento">
                 </div>
                 <div class="form-group">
                     <label for="alias_clave">Alias:
@@ -30,7 +36,7 @@
                         @endif
                     </label>
                     <input type="text" name="alias_clave" class="form-control form-control-user" id="alias_clave"
-                        value="{{ old('alias_clave') }}" placeholder="Alias">
+                        value="{{ $agenda->alias }}" placeholder="Alias">
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre:
@@ -39,7 +45,7 @@
                         @endif
                     </label>
                     <input type="text" name="nombre" class="form-control form-control-user" id="nombre"
-                        value="{{ old('nombre') }}" placeholder="Nombre">
+                        value="{{ $agenda->nombre }}" placeholder="Nombre">
                 </div>
                 <div class="form-group">
                     <label for="apellido_p">Primer Apellido:
@@ -48,7 +54,7 @@
                         @endif
                     </label>
                     <input type="text" name="apellido_p" class="form-control form-control-user" id="apellido_p"
-                        value="{{ old('apellido_p') }}" placeholder="Primer Apellido">
+                        value="{{ $agenda->apellido_p }}" placeholder="Primer Apellido">
                 </div>
                 <div class="form-group">
                     <label for="apellido_m">Segundo Apellido:
@@ -57,7 +63,7 @@
                         @endif
                     </label>
                     <input type="text" name="apellido_m" class="form-control form-control-user" id="apellido_m"
-                        value="{{ old('apellido_m') }}" placeholder="Segundo Apellido">
+                        value="{{ $agenda->apellido_m }}" placeholder="Segundo Apellido">
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:
@@ -66,7 +72,7 @@
                         @endif
                     </label>
                     <input type="text" name="telefono" class="form-control form-control-user" id="telefono"
-                        value="{{ old('telefono') }}" placeholder="Teléfono">
+                        value="{{ $agenda->telefono }}" placeholder="Teléfono">
                 </div>
                 <div class="form-group">
                     <label for="hora">Hora:
@@ -75,7 +81,7 @@
                         @endif
                     </label>
                     <input type="datetime-local" name="hora" class="form-control form-control-user" id="hora"
-                        value="{{ old('hora') }}">
+                        value="{{ $agenda->alias }}">
                 </div>
 
                 <div class="form-group">
@@ -85,7 +91,7 @@
                         @endif
                     </label>
                     <select name='publicidad' class="custom-select">
-                        <option>Seleccione Publicidad</option>
+                        <option>{{ $agenda->publicidad }}</option>
                         <option value="facebook">Facebook</option>
                         <option value="cartel">Cartel</option>
                         <option value="propaganda">Propaganda</option>
@@ -94,11 +100,11 @@
                 <div class="form-group">
                     <label for="nombre">Contesto:
                         @if ($errors->first('contesto'))
-                            <p class='text-danger'>{{ $errors->first('contesto') }}</p>
+                            <p class=' text-danger'>{{ $errors->first('contesto') }}</p>
                         @endif
                     </label>
                     <input type="text" name="contesto" class="form-control form-control-user" id="contesto"
-                        value="{{ old('contesto') }}" placeholder="Contesto">
+                        value="{{ $agenda->contesto }}" placeholder="Contesto">
                 </div>
 
                 <div class="row">
