@@ -38,7 +38,9 @@ Route::get('reporteagenda',[ControllerAgenda::class,'reporteagenda'])->name('rep
 
 //CURSO
 Route::get('curso',[ControllerCurso::class,'curso'])->name('curso');
-Route::post('guardacurso',[ControllerCurso::class,'guardacurso'])->name('guardacurso');
+Route::post('guardarcurso',[ControllerCurso::class,'guardarcurso'])->name('guardarcurso');
+
+
 
 //PRODUCTIVIDAD
 Route::get('productividad',[ControllerProductividad::class,'productividad'])->name('productividad');

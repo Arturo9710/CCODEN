@@ -111,7 +111,8 @@ class ControllerEmpleados extends Controller
         ->with('empleados',$empleados[0]);
     }
 
-    public function guardacambios(Request $request){
+    public function guardacambios(Request $request) 
+    {dd($request);
 
         $this->validate($request,[
             'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -132,6 +133,7 @@ class ControllerEmpleados extends Controller
         }
     
         $empleados = empleados::find($request->id_empleado);
+        
         $empleados->id_empleado= $request->id_empleado;
         $empleados->alias = $request->alias;
         $empleados->nombre = $request->nombre;
