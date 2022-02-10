@@ -94,11 +94,9 @@
                 <div class="row">
                     <div class="col-xs-10 col-md-10"><input type="submit" value="Guardar"
                             class="btn btn-primary btn-user btn-block" title="Guardar datos ingresados"></div>
+
                 </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
 @endsection
