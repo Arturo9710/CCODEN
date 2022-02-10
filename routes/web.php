@@ -56,5 +56,12 @@ Route::post('guardarcurso',[ControllerCurso::class,'guardarcurso'])->name('guard
 
 //PRODUCTIVIDAD
 Route::get('productividad',[ControllerProductividad::class,'productividad'])->name('productividad');
+
 Route::post('guardarproductividad',[ControllerProductividad::class,'guardarproductividad'])->name('guardarproductividad');
 
+// Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproductividad'])->name('reporteproductividad');
+
+// Route::get('desactivarproductividad/{id_productividad}',[ControllerProductividad::class,'desactivarproductividad'])->name('desactivarproductividad');
+
+// Route::get('borraproductividad/{id_productividad}',[ControllerProductividad::class,'borraproductividad'])->name('borraproductividad');
+// Route::get('activa_productividad/{id_productividad}',[Controllerproductividad::class,'activarproductividad'])->name('activarproductividad');
