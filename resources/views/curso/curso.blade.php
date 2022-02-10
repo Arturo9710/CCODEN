@@ -1,13 +1,14 @@
 @extends('layout.plantilla')
 @section('content')
 
+<div class="col-lg-7" style="margin: 0 auto;">
         <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">CURSO</h1>
                                 <hr> 
                             </div>
-                            <form action="{{route('guardacurso')}}" method ="POST" class="user">
+                            <form action="{{route('guardarcurso')}}" method ="POST" class="user">
                                          {{csrf_field()}}
                                  <div class="form-group">
                                 <label for="nombre">ID Curso:
@@ -16,7 +17,7 @@
                                     @endif
                                 </label>
                                     <input type="text" name="id_curso" class="form-control form-control-user" id="id_curso" 
-                                       value="{{old('id_curso')}}" placeholder="ID Curso">
+                                       value="{{$idsigue}}"  readonly='readonly' placeholder="ID Curso">
                                 </div>
 
                                 <div class="form-group">
@@ -69,15 +70,6 @@
                                        value="{{old('clave_agenda')}}" placeholder="Clave Agenda">
                                 </div>
                                 <div class="form-group">
-                                <label for="nombre">ID Agenda:
-                                    @if($errors->first('clave_agenda'))
-                                    <p class = 'text-danger'>{{$errors->first('clave_agenda')}}</p>
-                                    @endif
-                                </label>
-                                    <input type="text" name="clave_agenda" class="form-control form-control-user" id="clave_agenda" 
-                                       value="{{old('clave_agenda')}}" placeholder="ID Agenda">
-                                </div>
-                                <div class="form-group">
                                 <label for="nombre">Edad:
                                     @if($errors->first('edad'))
                                     <p class = 'text-danger'>{{$errors->first('edad')}}</p>
@@ -96,12 +88,12 @@
                                        value="{{old('junta_informacion')}}" placeholder="Junta Inaformación">
                                 </div>
                                 <div>
-                                <label for="dni">Despacho:</label>
+                                <label for="despacho">Despacho:</label>
                                 <select name = 'publicidad' class="custom-select">
                                 <option selected="">Seleccione Despacho</option>
-                                <option value="1">103</option>
-                                <option value="2">104</option>
-                                <option value="3">105</option>
+                                <option value="103">103</option>
+                                <option value="104">104</option>
+                                <option value="105">105</option>
                                 </select>
                                 </div>
 
@@ -132,8 +124,6 @@
                                     <input type="text" name="campo_vacio_f1" class="form-control form-control-user" id="campo_vacio_f1"
                                     value="{{old('campo_vacio_f1')}}"   placeholder="Campo Vacio">
                                 </div>
-                                
-
                                 <div class="row">
                                 <div class="col-xs-10 col-md-10"><input type="submit" value="Guardar" class="btn btn-primary btn-user btn-block"
                                    title="Guardar datos ingresados"></div>

@@ -5,18 +5,14 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
 @endsection
-@section('titulo', 'Agenda Reportes')
+@section('titulo', 'Reportes Productividad')
 @section('content')
     <div class="container">
-        <h1>Reporte Agenda</h1>
+        <h1>Reporte Productividad</h1>
         <br>
-        <a href="{{ route('agenda') }}">
+        <a href="{{ route('productividad') }}">
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-<<<<<<< HEAD
-                    class="fas fa-download fa-sm text-white-50"></i> Crea una Agenda</button>
-=======
-                    class="fas fa-plus"></i> Nueva Agenda</button>
->>>>>>> origin
+                    class="fas fa-plus"></i> Productividad Nueva</button>
         </a>
         <br>
         <br>
@@ -33,42 +29,44 @@
                         <thead class="bg-primary text-white">
                             <tr>
                                 <th>#</th>
-                                <th>Seguimiento</th>
-                                <th>Alias</th>
                                 <th>Nombre</th>
                                 <th>Apellido Paterno</th>
                                 <th>Apellido Materno</th>
-                                <th>Hora</th>
-                                <th>Publicidad</th>
-                                <th>Operaciones</th>
+                                <th>Contesto</th>
+                                <th>Llego</th>
+                                <th>Porcentaje </th>
+                                <th>Efectividad </th>
+                                <th>Operaciones </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($agenda as $a)
+                            @foreach ($productividad as $pro)
                                 <tr>
 
-                                    <td>{{ $a->id_agenda }}</td>
-                                    <td>{{ $a->seguimiento }}</td>
-                                    <td>{{ $a->alias }}</td>
-                                    <td>{{ $a->nombre }}</td>
-                                    <td>{{ $a->apellido_p }}</td>
-                                    <td>{{ $a->apellido_m }}</td>
-                                    <td>{{ $a->hora }}</td>
-                                    <td>{{ $a->publicidad }}</td>
-
+                                    <td>{{ $pro->id_productividad }}</td>
+                                    <td>{{ $pro->nombre }}</td>
+                                    <td>{{ $pro->apellido_p }}</td>
+                                    <td>{{ $pro->apellido_m }}</td>
+                                    <td>{{ $pro->contesto }}</td>
+                                    <td>{{ $pro->llego }}</td>
+                                    <td>{{ $pro->porcentaje }}</td>
+                                    <td>{{ $pro->efectividad }}</td>
                                     <td>
-                                        <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
+                                        <a href="{{ route('modificaagenda', ['id_agenda' => $pro->id_productividad]) }}"
                                             class="btn btn-info">Editar
                                         </a>
-                                        @if ($a->deleted_at)
-                                            <a href="{{ route('activa_agenda', ['id_agenda' => $a->id_agenda]) }}">
+                                        @if ($pro->deleted_at)
+                                            <a
+                                                href="{{ route('activarproductividad', ['id_productividad' => $pro->id_productividad]) }}">
                                                 <button type="button" class="btn btn-warning">Activar</button>
                                             </a>
-                                            <a href="{{ route('borraAgenda', ['id_agenda' => $a->id_agenda]) }}">
+                                            <a
+                                                href="{{ route('borraAgenda', ['id_agenda' => $pro->id_productividad]) }}">
                                                 <button type="button" class="btn btn-secondary">Borrar</button>
                                             </a>
                                         @else
-                                            <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
+                                            <a
+                                                href="{{ route('desactivarproductividad', ['id_productividad' => $pro->id_productividad]) }}">
                                                 <button type="button" class="btn btn-danger">Desactivar</button>
                                             </a>
                                         @endif

@@ -17,7 +17,7 @@
                         @endif
                     </label>
                     <input type="text" name="id_empleado" class="form-control form-control-user" id="id_empleado"
-                        value="{{ $idsigue }}" placeholder="ID Empleado">
+                        value="{{ $idsigue }}" readonly = 'readonly' placeholder="ID Empleado">
                 </div>
                 <div class="form-group">
                     <label for="nombre">Alias:

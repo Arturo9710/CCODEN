@@ -28,7 +28,6 @@ class ControllerEmpleados extends Controller
     }
    
     public function guardarempleado(Request $request){
-    
         $this->validate($request,[
             'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -39,7 +38,8 @@ class ControllerEmpleados extends Controller
             'foto'=>'image|mimes:jpg,png,jpeg'
             
         ]);
-
+        
+        dd($request);
         $file = $request->file('foto');
         if($file<>"")
         {
@@ -51,7 +51,6 @@ class ControllerEmpleados extends Controller
             $foto2 = "sinfoto.png";
         }
      
-
         $empleados = new empleados;
         $empleados->id_empleado= $request->id_empleado;
         $empleados->alias = $request->alias;
@@ -68,6 +67,7 @@ class ControllerEmpleados extends Controller
         Session::flash('mensaje',"El Empleado $request->nombre $request->apellido_p 
         ha sido dado de alta correctaemente");
         return redirect()->route('reporteempleado');
+       
     }
 
     public function reporteempleado(){
@@ -112,7 +112,8 @@ class ControllerEmpleados extends Controller
         ->with('empleados',$empleados[0]);
     }
 
-    public function guardacambios(Request $request){
+    public function guardacambios(Request $request) 
+    {dd($request);
 
         $this->validate($request,[
             'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -131,9 +132,9 @@ class ControllerEmpleados extends Controller
             $foto2 = $request->id_empleado . $foto;
             \Storage::disk('local')->put($foto2, \File::get($file));
         }
+    
+        $empleados = empleados::find($request->id_empleado);
         
-
-        $empleados = empleados::withTrashed()->find($request->id_empleado);
         $empleados->id_empleado= $request->id_empleado;
         $empleados->alias = $request->alias;
         $empleados->nombre = $request->nombre;
@@ -147,6 +148,7 @@ class ControllerEmpleados extends Controller
         $empleados->foto = $foto2;
         }
         $empleados->save();
+
         Session::flash('mensaje',"El Empleado $request->nombre $request->apellido_p 
         ha sido modificado correctaemente");
         return redirect()->route('reporteempleado');

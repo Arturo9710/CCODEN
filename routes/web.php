@@ -28,6 +28,16 @@ Route::get('modificaempleado/{id_empleado}',[ControllerEmpleados::class,'modific
 
 Route::post('guardacambios',[ControllerEmpleados::class,'guardacambios'])->name('guardacambios');
 
+//ENTREVISTAS
+Route::get('entrevista',[ControllerEntrevista::class,'entrevista'])->name('entrevista');
+Route::post('guardarentrevista',[ControllerEntrevista::class,'guardarentrevista'])->name('guardarentrevista');
+Route::get('reporteentrevista',[ControllerEntrevista::class,'reporteentrevista'])->name('reporteentrevista');
+Route::get('desactivaentrevista/{id_entrevista}',[ControllerEntrevista::class,'desactivaentrevista'])->name('desactivaentrevista');
+Route::get('activarentrevista/{id_entrevista}',[ControllerEntrevista::class,'activarentrevista'])->name('activarentrevista');
+Route::get('borraentrevista/{id_entrevista}',[ControllerEntrevista::class,'borraentrevista'])->name('borraentrevista');
+Route::get('modificaentrevista/{id_entrevista}',[ControllerEntrevista::class,'modificaentrevista'])->name('modificaentrevista');
+Route::post('guardacambios',[ControllerEntrevista::class,'guardacambios'])->name('guardacambios');
+
 //AGENDA
 Route::get('agenda',[ControllerAgenda::class,'agenda'])->name('agenda');
 Route::post('guardaragenda',[ControllerAgenda::class,'guardaragenda'])->name('guardaragenda');
@@ -45,15 +55,23 @@ Route::get('modificaagenda/{id_agenda}',[ControllerAgenda::class,'modificaagenda
 Route::post('guardacambiosAgenda',[ControllerAgenda::class,'guardacambiosAgenda'])->name('guardacambiosAgenda');
 
 
-//ENTREVISTAS
-Route::get('entrevista',[ControllerEntrevista::class,'entrevista'])->name('entrevista');
-Route::post('guardarentrevista',[ControllerEntrevista::class,'guardarentrevista'])->name('guardarentrevista');
-Route::get('reporteentrevista',[ControllerEmpleados::class,'reporteentrevista'])->name('reporteentrevista');
-
 //CURSO
 Route::get('curso',[ControllerCurso::class,'curso'])->name('curso');
-Route::post('guardacurso',[ControllerCurso::class,'guardacurso'])->name('guardacurso');
+Route::post('guardarcurso',[ControllerCurso::class,'guardarcurso'])->name('guardarcurso');
+
+
 
 //PRODUCTIVIDAD
 Route::get('productividad',[ControllerProductividad::class,'productividad'])->name('productividad');
+
 Route::post('guardarproductividad',[ControllerProductividad::class,'guardarproductividad'])->name('guardarproductividad');
+
+<<<<<<< HEAD
+Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproductividad'])->name('reporteproductividad');
+
+Route::get('desactivarproductividad/{id_productividad}',[ControllerProductividad::class,'desactivarproductividad'])->name('desactivarproductividad');
+
+Route::get('borraproductividad/{id_productividad}',[ControllerProductividad::class,'borraproductividad'])->name('borraproductividad');
+Route::get('activa_productividad/{id_productividad}',[Controllerproductividad::class,'activarproductividad'])->name('activarproductividad');
+=======
+>>>>>>> 1845a5fe85d7ac2dc06d3715904c1d0702a92de0
