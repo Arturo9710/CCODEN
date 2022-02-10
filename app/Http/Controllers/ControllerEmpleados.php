@@ -111,8 +111,8 @@ class ControllerEmpleados extends Controller
         ->with('empleados',$empleados[0]);
     }
 
-    public function guardacambios(Request $request) 
-    {dd($request);
+    public function guardacambios_empleados(Request $request) 
+    { 
 
         $this->validate($request,[
             'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -133,7 +133,6 @@ class ControllerEmpleados extends Controller
         }
     
         $empleados = empleados::find($request->id_empleado);
-        
         $empleados->id_empleado= $request->id_empleado;
         $empleados->alias = $request->alias;
         $empleados->nombre = $request->nombre;
@@ -149,7 +148,7 @@ class ControllerEmpleados extends Controller
         $empleados->save();
 
         Session::flash('mensaje',"El Empleado $request->nombre $request->apellido_p 
-        ha sido modificado correctaemente");
+        ha sido dado de alta correctaemente");
         return redirect()->route('reporteempleado');
     }
     

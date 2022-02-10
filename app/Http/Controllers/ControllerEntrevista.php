@@ -93,7 +93,7 @@ class ControllerEntrevista extends Controller
 
     }
 
-    public function guardacambios(Request $request){
+    public function guardacambios_entrevista(Request $request){
 
         $this->validate($request,[
             'nombre_agenda' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',

@@ -8,7 +8,7 @@
                 <h1 class="h4 text-gray-900 mb-4">EDITA EMPLEADO</h1>
                 <hr>
             </div>
-            <form action="{{ route('guardacambios') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('guardacambios_empleados') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="nombre">ID Empleado:
@@ -17,7 +17,7 @@
                         @endif
                     </label>
                     <input type="text" name="id_empleado" class="form-control form-control-user" id="id_empleado"
-                        value="{{ $empleados->id_empleado }}" placeholder="ID Empleado">
+                        value="{{ $empleados->id_empleado }}"  readonly = 'readonly' placeholder="ID Empleado">
                 </div>
                 <div class="form-group">
                     <label for="nombre">Alias:

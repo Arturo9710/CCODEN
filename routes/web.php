@@ -13,20 +13,13 @@ Route::get('/',function(){
 
 //EMPLEADOS
 Route::get('empleados',[ControllerEmpleados::class,'empleados'])->name('empleados');
-
 Route::post('guardarempleado',[ControllerEmpleados::class,'guardarempleado'])->name('guardarempleado');
-
 Route::get('reporteempleado',[ControllerEmpleados::class,'reporteempleado'])->name('reporteempleado');
-
 Route::get('desactivarempleado/{id_empleado}',[ControllerEmpleados::class,'desactivarempleado'])->name('desactivarempleado');
-
 Route::get('activarempleado/{id_empleado}',[ControllerEmpleados::class,'activarempleado'])->name('activarempleado');
-
 Route::get('borraempleado/{id_empleado}',[ControllerEmpleados::class,'borraempleado'])->name('borraempleado');
-
 Route::get('modificaempleado/{id_empleado}',[ControllerEmpleados::class,'modificaempleado'])->name('modificaempleado');
-
-Route::post('guardacambios',[ControllerEmpleados::class,'guardacambios'])->name('guardacambios');
+route::post('guardacambios_empleados',[ControllerEmpleados::class,'guardacambios_empleados'])->name('guardacambios_empleados');
 
 //ENTREVISTAS
 Route::get('entrevista',[ControllerEntrevista::class,'entrevista'])->name('entrevista');
@@ -36,7 +29,7 @@ Route::get('desactivaentrevista/{id_entrevista}',[ControllerEntrevista::class,'d
 Route::get('activarentrevista/{id_entrevista}',[ControllerEntrevista::class,'activarentrevista'])->name('activarentrevista');
 Route::get('borraentrevista/{id_entrevista}',[ControllerEntrevista::class,'borraentrevista'])->name('borraentrevista');
 Route::get('modificaentrevista/{id_entrevista}',[ControllerEntrevista::class,'modificaentrevista'])->name('modificaentrevista');
-Route::post('guardacambios',[ControllerEntrevista::class,'guardacambios'])->name('guardacambios');
+Route::post('guardacambios_entrevista',[ControllerEntrevista::class,'guardacambios_entrevista'])->name('guardacambios_entrevista');
 
 //AGENDA
 Route::get('agenda',[ControllerAgenda::class,'agenda'])->name('agenda');
