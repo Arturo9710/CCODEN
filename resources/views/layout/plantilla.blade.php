@@ -80,7 +80,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href={{ route('productividad') }}>
+                <a class="nav-link" href={{ route('reporteproductividad') }}>
                     <i class="bi bi-people-fill"></i>
                     <span>Productividad</span></a>
             </li>

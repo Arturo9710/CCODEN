@@ -28,7 +28,6 @@ class ControllerEmpleados extends Controller
     }
    
     public function guardarempleado(Request $request){
-    
         $this->validate($request,[
             'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -39,7 +38,8 @@ class ControllerEmpleados extends Controller
             'foto'=>'image|mimes:jpg,png,jpeg'
             
         ]);
-
+        
+        dd($request);
         $file = $request->file('foto');
         if($file<>"")
         {
@@ -68,6 +68,7 @@ class ControllerEmpleados extends Controller
         Session::flash('mensaje',"El Empleado $request->nombre $request->apellido_p 
         ha sido dado de alta correctaemente");
         return redirect()->route('reporteempleado');
+       
     }
 
     public function reporteempleado(){
