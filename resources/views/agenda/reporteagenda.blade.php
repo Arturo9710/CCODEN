@@ -12,7 +12,7 @@
         <br>
         <a href="{{ route('agenda') }}">
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Nueva Agenda</button>
+                    class="fas fa-download fa-sm text-white-50"></i> Crea una Agenda</button>
         </a>
         <br>
         <br>
