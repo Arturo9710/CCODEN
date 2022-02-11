@@ -1,8 +1,13 @@
 @extends('layout.plantilla')
+@section('css')
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-ui/jquery-ui.min.css') }}">
+@endsection
+@section('titulo', 'Entrevistas')
 @section('content')
 
-    <div class="col-lg-7" style="
-                                    margin: 0 auto;">
+    <div class="col-lg-7"
+        style="
+                                                                                                            margin: 0 auto;">
         <div class="p-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">ENTREVISTA</h1>
@@ -112,8 +117,23 @@
                 </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
+@section('js')
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script>
+        $('#nombre_agenda').autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                    url: "{{ route('buscador') }}",
+                    dataType: 'json',
+                    data: {
+                        entrevista: request.entrevista
+                    },
+                    success: function(data) {
+                        response(data);
+                    }
+                })
+            }
+        })
+    </script>
+@endsection
 @endsection

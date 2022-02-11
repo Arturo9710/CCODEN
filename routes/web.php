@@ -22,6 +22,7 @@ Route::get('modificaempleado/{id_empleado}',[ControllerEmpleados::class,'modific
 route::post('guardacambios_empleados',[ControllerEmpleados::class,'guardacambios_empleados'])->name('guardacambios_empleados');
 
 //ENTREVISTAS
+Route::get('buscador',[ControllerEntrevista::class,'buscador'])->name('buscador');
 Route::get('entrevista',[ControllerEntrevista::class,'entrevista'])->name('entrevista');
 Route::post('guardarentrevista',[ControllerEntrevista::class,'guardarentrevista'])->name('guardarentrevista');
 Route::get('reporteentrevista',[ControllerEntrevista::class,'reporteentrevista'])->name('reporteentrevista');

@@ -4,11 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\entrevista;
+use App\Models\agenda;
 use DataTables;
 use Session;
 
 class ControllerEntrevista extends Controller
 {
+
+    public function buscador(Request $request){
+        $entrevista = $request->get('entrevista');
+        $querys = entrevista::where('nombre_agenda','LIKE','%'.$entrevista.'%')->get();
+
+        $data =[];
+
+        foreach($querys as $query){
+            $data[] = [
+                'label' =>$query->nombre_agenda
+            ];
+        }
+        return $data;
+
+        return $query;
+    }
 
     public function entrevista(){
 
