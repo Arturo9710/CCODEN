@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\agenda;
+use App\Models\empleados;
 use Session;
 
 
@@ -11,23 +12,29 @@ class ControllerAgenda extends Controller
 {
 
     public function agenda(){
-        return view('agenda.agenda');
+        $empleados = empleados::all();
+
+        return view('agenda.agenda')
+        ->with('empleados', $empleados);
     }
     public function guardaragenda(Request $request){
     
         $this->validate($request,[
-            'seguimiento' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'alias_clave' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+            // 'seguimiento' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+            'alias_clave' => 'required',
             'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+            'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
+            'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
             'telefono' => 'required|regex:/^[0-9]{10}$/',
+            'edad' => 'required|regex:/^[0-9]{2}$/',
             'hora' => 'required',
             'publicidad' => 'required',
             'contesto' => 'required',
             
         ]);
-
+        
+        
+        
         $agenda = new agenda;
         $agenda->id_agenda    = $request->id_agenda;
         $agenda->seguimiento  = $request->seguimiento;
@@ -36,12 +43,15 @@ class ControllerAgenda extends Controller
         $agenda->apellido_p   = $request->apellido_p;
         $agenda->apellido_m   = $request->apellido_m;
         $agenda->telefono     = $request->telefono;
+        $agenda->edad         = $request->edad;
         $agenda->hora         = $request->hora;
         $agenda->publicidad   = $request->publicidad;
         $agenda->contesto     = $request->contesto;
-        $agenda->empleado_id  = 2;
+        $agenda->empleado_id  = 22;
 
         $agenda->save();
+
+        // dd($agenda);
         return redirect()->route('reporteagenda');
         
     }
@@ -54,6 +64,7 @@ class ControllerAgenda extends Controller
         'nombre',
         'apellido_p',
         'apellido_m',
+        'telefono',
         'hora',
         'publicidad',
         'deleted_at'])
@@ -104,6 +115,7 @@ class ControllerAgenda extends Controller
             'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'telefono' => 'required|regex:/^[0-9]{10}$/',
+            'edad' => 'required|regex:/^[0-9]{2}$/',
             'hora' => 'required',
             'publicidad' => 'required',
             'contesto' => 'required',
@@ -119,6 +131,7 @@ class ControllerAgenda extends Controller
             $agendas->apellido_p =$request->apellido_p;
             $agendas->apellido_m = $request->apellido_m;
             $agendas->telefono = $request->telefono;
+            $agendas->edad = $request->edad;
             $agendas->hora = $request->hora;
             $agendas->publicidad = $request->publicidad;
             $agendas->contesto = $request->contesto;

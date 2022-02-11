@@ -4,7 +4,7 @@
 
     <div class="col-lg-7"
         style="
-                                                                                                                                        margin: 0 auto;">
+                                                                                                                                                                                                                margin: 0 auto;">
         <div class="  p-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">AGENDA</h1>
@@ -21,16 +21,21 @@
                         @endif
                     </label>
                     <input type="text" name="seguimiento" class="form-control form-control-user" id="seguimiento"
-                        value="{{ old('seguimiento') }}" placeholder="Seguimiento">
+                        value="{{ old('seguimiento') }}" placeholder="Seguimiento" hidden>
                 </div>
                 <div class="form-group">
-                    <label for="alias_clave">Alias:
+                    <label for="alias_clave">Alias Clave:
                         @if ($errors->first('alias_clave'))
                             <p class='text-danger'>{{ $errors->first('alias_clave') }}</p>
                         @endif
                     </label>
-                    <input type="text" name="alias_clave" class="form-control form-control-user" id="alias_clave"
-                        value="{{ old('alias_clave') }}" placeholder="Alias">
+
+                    <select name='alias_clave' class="custom-select">
+                        @foreach ($empleados as $empleado)
+                            <option value="{{ $empleado->alias }}">{{ $empleado->alias }}</option>
+                        @endforeach
+
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="nombre">Nombre:
@@ -69,12 +74,21 @@
                         value="{{ old('telefono') }}" placeholder="Teléfono">
                 </div>
                 <div class="form-group">
+                    <label for="edad">Edad:
+                        @if ($errors->first('edad'))
+                            <p class='text-danger'>{{ $errors->first('edad') }}</p>
+                        @endif
+                    </label>
+                    <input type="text" name="edad" class="form-control form-control-user" id="edad"
+                        value="{{ old('edad') }}" placeholder="Edad">
+                </div>
+                <div class="form-group">
                     <label for="hora">Hora:
                         @if ($errors->first('hora'))
                             <p class='text-danger'>{{ $errors->first('hora') }}</p>
                         @endif
                     </label>
-                    <input type="time" name="hora" class="form-control form-control-user" id="hora"
+                    <input type="datetime-local" name="hora" class="form-control form-control-user" id="hora"
                         value="{{ old('hora') }}">
                 </div>
 
@@ -89,6 +103,7 @@
                         <option value="facebook">Facebook</option>
                         <option value="cartel">Cartel</option>
                         <option value="propaganda">Propaganda</option>
+                        <option value="hawaina">Hawaina</option>
                     </select>
                 </div>
                 <div class="form-group">

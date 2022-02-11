@@ -29,17 +29,17 @@ class ControllerEmpleados extends Controller
    
     public function guardarempleado(Request $request){
         $this->validate($request,[
-            'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+            // 'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'telefono' => 'required|regex:/^[s0-9]{10}$/',
+            'telefono' => 'required|regex:/^[0-9]{10}$/',
             'fecha_nacimiento' => 'required|date',
             'foto'=>'image|mimes:jpg,png,jpeg'
             
         ]);
         
-        dd($request);
+     
         $file = $request->file('foto');
         if($file<>"")
         {
@@ -72,7 +72,7 @@ class ControllerEmpleados extends Controller
 
     public function reporteempleado(){
         $empleados = empleados::withTrashed()->select(['id_empleado','alias','nombre',
-        'apellido_p','apellido_m','telefono','genero','foto','deleted_at'])
+        'apellido_p','telefono','foto','deleted_at'])
         ->orderBy('empleados.nombre')
         ->get();
         

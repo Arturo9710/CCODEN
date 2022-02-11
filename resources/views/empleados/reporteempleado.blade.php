@@ -28,10 +28,8 @@
                                 <th>#</th>
                                 <th>Alias</th>
                                 <th>Nombre</th>
-                                <th>Apellido Paterno</th>
-                                <th>Apellido Materno</th>
+                                <th>Primer Apellido</th>
                                 <th>Telefono</th>
-                                <th>Genero</th>
                                 <th>Foto Empleado</th>
                                 <th>Operaciones</th>
                             </tr>
@@ -44,9 +42,9 @@
                                     <td>{{ $empleado->alias }}</td>
                                     <td>{{ $empleado->nombre }}</td>
                                     <td>{{ $empleado->apellido_p }}</td>
-                                    <td>{{ $empleado->apellido_m }}</td>
+
                                     <td>{{ $empleado->telefono }}</td>
-                                    <td>{{ $empleado->genero }}</td>
+
                                     <td><img src="{{ asset('archivos/' . $empleado->foto) }}" height=50 width=50></td>
                                     <td style="display:flex;">
                                         <a href="{{ route('modificaempleado', ['id_empleado' => $empleado->id_empleado]) }}"
