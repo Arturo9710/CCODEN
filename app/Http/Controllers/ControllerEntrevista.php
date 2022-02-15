@@ -12,14 +12,19 @@ class ControllerEntrevista extends Controller
 {
 
     public function buscador(Request $request){
-        $entrevista = $request->get('entrevista');
-        $querys = entrevista::where('nombre_agenda','LIKE','%'.$entrevista.'%')->get();
+        $agenda = $request->get('agenda');
+        $querys = agenda::where('nombre','LIKE','%'.$agenda.'%')->get();
 
         $data =[];
 
         foreach($querys as $query){
             $data[] = [
-                'label' =>$query->nombre_agenda
+                'id_agenda' =>$query->id_agenda,
+                'nombre' =>$query->nombre,
+                'alias' =>$query->alias,
+                'seguimiento' =>$query->seguimiento,
+                'label' =>$query->id_agenda
+
             ];
         }
         return $data;
@@ -62,7 +67,7 @@ class ControllerEntrevista extends Controller
         $entrevista->hora= $request->hora;
         $entrevista->oficina= $request->oficina;
         $entrevista->status= $request->status;
-        $entrevista->agenda_id= 1;
+        $entrevista->agenda_id= 54;
         $entrevista->save();
 
         Session::flash('mensaje',"La Entrevista

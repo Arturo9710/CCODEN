@@ -31,7 +31,8 @@
                         @endif
                     </label>
                     <input type="text" name="nombre_agenda" class="form-control form-control-user" id="nombre_agenda"
-                        value="{{ old('nombre_agenda') }}" placeholder="Nombre Agenda">
+                        value="{{ old('nombre_agenda') }}" placeholder="Nombre Agenda" onkeyup="autocompletar()">
+                        <dl id="lista"></dl>
                 </div>
                 <div class="form-group">
                     <label for="nombre">Edad:
@@ -53,12 +54,12 @@
                 </div>
                 <div class="form-group">
                     <label for="publicidad">Publicidad:</label>
-                    <select name='publicidad' class="custom-select">
-                        <option selected="">Selecciona un Publicidad</option>
-                        <option>Facebook</option>
-                        <option>Cartel</option>
-                        <option">Propaganda</option>
-                    </select>
+                    @if ($errors->first('publicidad'))
+                            <p class='text-danger'>{{ $errors->first('publicidad') }}</p>
+                    @endif
+                    <input type="text" name="publicidad" class="form-control form-control-user" id="publicidad"
+                        value="{{ old('publicidad') }}" placeholder="Publicidad">
+
                 </div>
                 <div class="form-group">
                     <label for="hora">Hora:
@@ -66,10 +67,10 @@
                             <p class='text-danger'>{{ $errors->first('hora') }}</p>
                         @endif
                     </label>
-                    <input type="datetime-local" name="hora" class="form-control form-control-user" id="hora"
+                    <input type="datetime" name="hora" class="form-control form-control-user" id="hora"
                         value="{{ old('hora') }}" placeholder="Hora">
                 </div>
-                <div class="form-group">
+              <!--  <div class="form-group">
                     <label for="oficina">Oficina:</label>
                     <select name='oficina' class="custom-select">
                         <option selected="">Seleccione Oficina</option>
@@ -109,7 +110,7 @@
 
                     </div>
 
-                </div>
+                </div>-->
                 <hr>
                 <div class="row">
                     <div class="col-xs-10 col-md-10"><input type="submit" value="Guardar"
@@ -119,6 +120,7 @@
     </div>
 @section('js')
     <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <link href="{{ asset('css/estilosAutocompleta.css') }}" rel="stylesheet" type="text/css">
     <script>
         $('#nombre_agenda').autocomplete({
             source: function(request, response) {
@@ -126,14 +128,65 @@
                     url: "{{ route('buscador') }}",
                     dataType: 'json',
                     data: {
-                        entrevista: request.entrevista
+                        agenda: request.agenda
                     },
-                    success: function(data) {
-                        response(data);
-                    }
+                    success: function(response) {
+                        // response($.map(data, function (item,element) {
+                        //     console.log(element.attr("id"))
+                        //     $(this).css("color","red")
+                        //     console.log()
+                        //     return item.nombre
+                        // }));
+                        
+                    },
+
                 })
-            }
+            },
+            select: function (event, ui) {
+                // alert(ui.item.attr("id"));
+                // alert(ui.item.label);
+                // alert(ui.item.alias);
+            },
+
+
         })
+
+
+
+          
+        function autocompletar(){
+            var query = $("#nombre_agenda").val(); //Valor de la caja de texto 
+            if(query != '')  
+            {  
+                $.ajax({  
+                    url:"js/search.php",  //Busqueda en la base de datos y creacion de lista
+                    method:"POST",  
+                    data:{query:query},  
+                    success:function(data)  
+                    {  
+                        $('#lista').fadeIn().css("opacity","1").removeAttr("hidden");  //Muestra la lista
+                        $('#lista').html(data);  //Coloca datos de la base
+                        $('#lista dl dt').each(function(index, item){
+                            id=$(item).attr('data-id');
+                            nombre=$(item).attr('data-nom');
+                            edad=$(item).attr('data-edad');
+                            alias=$(item).attr('data-alias');
+                            publi=$(item).attr('data-publi');
+                            hora=$(item).attr('data-hora');
+                            $(item).attr("onclick","seleccion('"+id+"','"+nombre+"','"+edad+"','"+alias+"','"+publi+"','"+hora+"')");
+                        });
+                    }  
+                });  
+            } 
+        }
+        function seleccion(idE,nombreE,edadE,aliasE,publiE,horaE){
+            $(".ulCLass").hide();
+            $("#nombre_agenda").val(nombreE);
+            $("#edad").val(edadE);
+            $("#citado").val(aliasE);
+            $("#publicidad").val(publiE);
+            $("#hora").val(horaE);
+        }
     </script>
 @endsection
 @endsection
