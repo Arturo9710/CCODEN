@@ -1,5 +1,5 @@
 <?php  
- $connect = mysqli_connect("localhost", "root", "", "ccoden_base");  
+ $connect = mysqli_connect("localhost", "root", "", "baseccodenv2");  
  if(isset($_POST["query"]))  
  {  
       $output = '';  
@@ -10,7 +10,9 @@
       {  
            while($row = mysqli_fetch_array($result))  
            {  
-                $output .= '<dt data-id="'.$row["id_agenda"].'"  data-nom="'.$row["nombre"].'"  data-alias="'.$row["alias"].'" data-edad="'.$row["edad"].'" data-hora="'.$row["hora"].'" data-publi="'.$row["publicidad"].'">'.utf8_encode($row["nombre"]).'</dt>';  
+                $output .= '<dt data-id="'.$row["id_agenda"].'" 
+                 data-nom="'.$row["nombre"].'"  data-alias="'.$row["alias"].'" data-edad="'.$row["edad"].'" data-hora="'
+                 .$row["hora"].'" data-publi="'.$row["publicidad"].'">'.utf8_encode($row["nombre"]).'</dt>';  
            }  
       }else{
         $output .= 'No existe clave del diagnóstico';
