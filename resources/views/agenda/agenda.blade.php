@@ -4,7 +4,7 @@
 
     <div class="col-lg-7"
         style="
-                                                                                                                                                                                                                margin: 0 auto;">
+                                                                                                                                                                                                                            margin: 0 auto;">
         <div class="  p-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">AGENDA</h1>
@@ -14,15 +14,7 @@
             <form action="{{ route('guardaragenda') }}" method="POST" class="user">
                 {{ csrf_field() }}
 
-                <div class="form-group">
-                    <label for="seguimiento">Seguimiento:
-                        @if ($errors->first('seguimiento'))
-                            <p class='text-danger'>{{ $errors->first('seguimiento') }}</p>
-                        @endif
-                    </label>
-                    <input type="text" name="seguimiento" class="form-control form-control-user" id="seguimiento"
-                        value="{{ old('seguimiento') }}" placeholder="Seguimiento" hidden>
-                </div>
+
                 <div class="form-group">
                     <label for="alias_clave">Alias Clave:
                         @if ($errors->first('alias_clave'))

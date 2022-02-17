@@ -65,9 +65,7 @@ class ControllerEntrevista extends Controller
         $entrevista->citado= $request->citado;
         $entrevista->publicidad= $request->publicidad;
         $entrevista->hora= $request->hora;
-        $entrevista->oficina= $request->oficina;
-        $entrevista->status= $request->status;
-        $entrevista->agenda_id= 54;
+        $entrevista->agenda_id= $request->id_agenda;
         $entrevista->save();
 
         Session::flash('mensaje',"La Entrevista
