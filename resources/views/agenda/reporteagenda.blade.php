@@ -10,7 +10,9 @@
     <div class="container">
         <h1>Reporte Agenda</h1>
         <br>
+        @can('crear-agenda')
         <a href="{{ route('agenda') }}">
+         @endcan   
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fas fa-download fa-sm text-white-50"></i> Crea una Agenda</button>
         </a>
@@ -53,10 +55,13 @@
                                     <td>{{ $a->publicidad }}</td>
 
                                     <td>
+                                        @can('editar-agenda')
                                         <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
                                             class="btn btn-info">Editar
                                         </a>
+                                        @endcan
                                         @if ($a->deleted_at)
+                                        @can('desactivar-agenda')
                                             <a href="{{ route('activa_agenda', ['id_agenda' => $a->id_agenda]) }}">
                                                 <button type="button" class="btn btn-warning">Activar</button>
                                             </a>
@@ -67,6 +72,7 @@
                                             <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
                                                 <button type="button" class="btn btn-danger">Desactivar</button>
                                             </a>
+                                            @endcan
                                         @endif
                                     </td>
                                 </tr>

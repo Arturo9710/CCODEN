@@ -8,9 +8,11 @@
     <div class="container">
         <h1>REPORTE ENTREVISTA</h1>
         <br>
+        @can('crear-entrevista')
         <a href="{{ route('entrevista') }}">
             <button type="button" class="btn btn-success">Alta Entrevista</button>
         </a>
+        @endcan
         <br>
         <br>
         <div class="card shadow mb-1">
@@ -49,10 +51,14 @@
                                     <td>{{ $entrevista->status }}</td>
 
                                     <td style="display:flex;">
+
+                                    @can(editar-entrevista)
                                     <a href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                     <button type="button" class="btn btn-info">editar</button>
                                         </a>
+                                        @endcan
                                         @if($entrevista->deleted_at)
+                                        @can('desactivar-entrevista')
                                         <a href="{{ route('activarentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                         <button type="button" class="btn btn-warning">Activar</button>
                                         </a>  
@@ -63,6 +69,7 @@
                                         <a href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                         <button type="button" class="btn btn-danger">Desactiva</button>
                                         </a> 
+                                        @endcan
                                         @endif
                                     </td>
                                 </tr>
