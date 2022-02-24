@@ -26,7 +26,7 @@
                          </thead>
 
                          <tbody>
-  
+
                                 @foreach($usuarios as $usuario)
                                 <tr>
                                     <td style="display: none;">{{$usuario->id}}</td>
