@@ -15,6 +15,7 @@ class RolController extends Controller
 {
     function __contruct()
     {
+        $this->middleware('auth');
     $this->middleware('permission:ver-rol|crear-rol|editar-rol|borrar-rol',['only'=>['index']]); 
     $this->middleware('permission:crear-rol',['only'=>['create','store']]); 
     $this->middleware('permission:editar-rol',['only'=>['edit','update']]);     

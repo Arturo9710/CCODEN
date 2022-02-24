@@ -70,16 +70,11 @@ Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproduc
 // Route::get('borraproductividad/{id_productividad}',[ControllerProductividad::class,'borraproductividad'])->name('borraproductividad');
 // Route::get('activa_productividad/{id_productividad}',[Controllerproductividad::class,'activarproductividad'])->name('activarproductividad');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-////Ruta para el Dashboard ////
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
@@ -87,5 +82,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function(){
   Route::resource('roles', RolController::class);
   Route::resource('usuarios', UsuarioController::class);
-  Route::resource('agenda',ControllerAgenda::class);
+  
 });

@@ -12,6 +12,7 @@ class ControllerEmpleados extends Controller
 
     function __contruct()
     {
+        $this->middleware('auth');
     $this->middleware('permission:ver-socio|crear-socio|editar-socio|desactivar-socio',['only'=>['index']]); 
     $this->middleware('permission:crear-socio',['only'=>['create','store']]); 
     $this->middleware('permission:editar-socio',['only'=>['edit','update']]);     

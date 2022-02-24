@@ -12,6 +12,7 @@ class ControllerAgenda extends Controller
 {
     function __contruct()
     {
+        $this->middleware('auth');
     $this->middleware('permission:ver-agenda|crear-agenda|editar-agenda|desactivar-agenda',['only'=>['index']]); 
     $this->middleware('permission:crear-agenda',['only'=>['create','store']]); 
     $this->middleware('permission:editar-agenda',['only'=>['edit','update']]);     
