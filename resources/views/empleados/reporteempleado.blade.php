@@ -4,18 +4,19 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 @endsection
+
 @section('content')
     <div class="container">
-        <h1>REPORTE EMPLEADOS</h1>
+        <h1>Reporte Socios</h1>
         <br>
         <a href="{{ route('empleados') }}">
-            <button type="button" class="btn btn-success">Alta Empleado</button>
+            <button type="button" class="btn btn-success">Alta Socio</button>
         </a>
         <br>
         <br>
         <div class="card shadow mb-1">
             <div class="card-header py-1">
-                <h6 class="m-0 font-weight-bold text-primary">REPORTE EMPLEADOS</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Reporte Socios</h6>
             </div>
             @if (Session::has('mensaje'))
                 <div class="alert alert-success">{{ Session::get('mensaje') }}</div>
@@ -55,10 +56,10 @@
                                                 href="{{ route('activarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
                                                 <button type="button" class="btn btn-warning">Activar</button>
                                             </a>
-                                            <a
+                                            {{-- <a
                                                 href="{{ route('borraempleado', ['id_empleado' => $empleado->id_empleado]) }}">
                                                 <button type="button" class="btn btn-secondary">Borrar</button>
-                                            </a>
+                                            </a> --}}
                                         @else
                                             <a
                                                 href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">

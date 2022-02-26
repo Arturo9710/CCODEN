@@ -11,13 +11,9 @@
             <form action="{{ route('guardacambiosAgenda') }}" method="POST" class="user">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="nombre">Id agenda:
-                        @if ($errors->first('id_agenda'))
-                            <p class='text-danger'>{{ $errors->first('id_agenda') }}</p>
-                        @endif
-                    </label>
+
                     <input type="text" name="id_agenda" class="form-control form-control-user" id="id_agenda"
-                        value="{{ $agenda->id_agenda }}">
+                        value="{{ $agenda->id_agenda }}" hidden>
                 </div>
 
                 <div class="form-group">

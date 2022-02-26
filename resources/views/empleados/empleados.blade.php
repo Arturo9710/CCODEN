@@ -1,23 +1,18 @@
 @extends('layout.plantilla')
 
 @section('content')
-
     <div class="col-lg-7" style="margin: 0 auto;">
         <div class="p-5">
             <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">NUEVO EMPLEADO</h1>
+                <h1 class="h4 text-gray-900 mb-4">NUEVO SOCIO</h1>
                 <hr>
             </div>
             <form action="{{ route('guardarempleado') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="nombre">ID Empleado:
-                        @if ($errors->first('id_empleado'))
-                            <p class='text-danger'>{{ $errors->first('id_empleado') }}</p>
-                        @endif
-                    </label>
+
                     <input type="text" name="id_empleado" class="form-control form-control-user" id="id_empleado"
-                        value="{{ $idsigue }}" readonly = 'readonly' placeholder="ID Empleado">
+                        value="{{ $idsigue }}" readonly='readonly' placeholder="ID Empleado" hidden="true">
                 </div>
                 <div class="form-group">
                     <label for="nombre">Alias:
@@ -99,4 +94,5 @@
         </div>
     </div>
 
+    <script src={{ asset('js/miapp.js') }}></script>
 @endsection

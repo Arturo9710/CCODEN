@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\empleados;
 use DataTables;
@@ -28,17 +29,16 @@ class ControllerEmpleados extends Controller
     }
    
     public function guardarempleado(Request $request){
-        $this->validate($request,[
-            // 'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'telefono' => 'required|regex:/^[0-9]{10}$/',
-            'fecha_nacimiento' => 'required|date',
-            'foto'=>'image|mimes:jpg,png,jpeg'
-            
-        ]);
         
+         $this->validate($request,[
+         'alias' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/|unique:empleados,alias',
+         'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+         'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+         'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+         'telefono' => 'required|regex:/^[s0-9]{10}$/',
+         'fecha_nacimiento' => 'required|date',
+         'foto'=>'image|mimes:jpg,png,jpeg'
+         ]);
      
         $file = $request->file('foto');
         if($file<>"")
@@ -64,15 +64,17 @@ class ControllerEmpleados extends Controller
         $empleados->foto = $foto2;
         $empleados->save();
 
-        Session::flash('mensaje',"El Empleado $request->nombre $request->apellido_p 
+        Session::flash('mensaje',"El Socio $request->nombre $request->apellido_p 
         ha sido dado de alta correctaemente");
         return redirect()->route('reporteempleado');
        
     }
 
     public function reporteempleado(){
+        
         $empleados = empleados::withTrashed()->select(['id_empleado','alias','nombre',
         'apellido_p','telefono','foto','deleted_at'])
+        ->where('deleted_at','=',null)
         ->orderBy('empleados.nombre')
         ->get();
         
@@ -82,7 +84,7 @@ class ControllerEmpleados extends Controller
     public function desactivarempleado($id_empleado){
         $empleados = empleados::find($id_empleado);
         $empleados->delete();
-        Session::flash('mensaje',"El Empleado 
+        Session::flash('mensaje',"El Socio 
         ha sido desactivado correctaemente");
         return redirect()->route('reporteempleado');
      
@@ -90,7 +92,7 @@ class ControllerEmpleados extends Controller
 
     public function activarempleado($id_empleado){
         $empleados = empleados::withTrashed()->where('id_empleado',$id_empleado)->restore();
-        Session::flash('mensaje',"El Empleado
+        Session::flash('mensaje',"El Socio
         ha sido activado correctamente correctaemente");
         return redirect()->route('reporteempleado');
      
@@ -98,7 +100,7 @@ class ControllerEmpleados extends Controller
 
     public function borraempleado($id_empleado){
         $empleados = empleados::withTrashed()->find($id_empleado)->forceDelete();
-        Session::flash('mensaje',"El Empleado  
+        Session::flash('mensaje',"El Socio  
         ha sido borrado del sistema correctaemente");
         return redirect()->route('reporteempleado');
     }
@@ -112,7 +114,7 @@ class ControllerEmpleados extends Controller
         ->with('empleados',$empleados[0]);
     }
 
-    public function guardacambios_empleados(Request $request) 
+    public function guardacambios_empleados(Request $request)
     { 
 
         $this->validate($request,[
@@ -120,10 +122,12 @@ class ControllerEmpleados extends Controller
             'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-            'telefono' => 'required|regex:/^[s0-9]{10}$/',
+            'telefono' => 'required|regex:/^[0-9]{10}$/',
             'fecha_nacimiento' => 'required|date',
             'foto'=>'image|mimes:jpg,png,jpeg'
         ]);
+
+        // $aliasvalida = $request->alias('')
 
         $file = $request->file('foto');
         if($file<>"")
@@ -148,7 +152,7 @@ class ControllerEmpleados extends Controller
         }
         $empleados->save();
 
-        Session::flash('mensaje',"El Empleado $request->nombre $request->apellido_p 
+        Session::flash('mensaje',"El Socio $request->nombre $request->apellido_p 
         ha sido dado de alta correctaemente");
         return redirect()->route('reporteempleado');
     }

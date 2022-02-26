@@ -8,17 +8,17 @@
 @section('titulo', 'Agenda Reportes')
 @section('content')
     <div class="container">
-        <h1>Reporte Agenda</h1>
+        <h1>Reporte Telefonia</h1>
         <br>
         <a href="{{ route('agenda') }}">
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Crea una Agenda</button>
+                    class="fas fa-download fa-sm text-white-50"></i> Crea nueva Telefonia</button>
         </a>
         <br>
         <br>
         <div class="card shadow mb-1">
             <div class="card-header py-1">
-                <h6 class="m-0 font-weight-bold text-primary">Agenda Datos</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Telefonia Datos</h6>
             </div>
             @if (Session::has('mensaje'))
                 <div class="alert alert-success">{{ Session::get('mensaje') }}</div>
@@ -56,6 +56,7 @@
                                         <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
                                             class="btn btn-info">Editar
                                         </a>
+
                                         @if ($a->deleted_at)
                                             <a href="{{ route('activa_agenda', ['id_agenda' => $a->id_agenda]) }}">
                                                 <button type="button" class="btn btn-warning">Activar</button>
@@ -68,6 +69,7 @@
                                                 <button type="button" class="btn btn-danger">Desactivar</button>
                                             </a>
                                         @endif
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -84,6 +86,21 @@
                         $(document).ready(function() {
                             $('#dataTableAgenda').DataTable({
                                 responsive: true,
+                                autoWidth: false,
+
+                                "language": {
+                                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                                    "zeroRecords": "Nada encontrado - disculpa",
+                                    "info": "Mostrando la página _PAGE_ de _PAGES_",
+                                    "infoEmpty": "No records available",
+                                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                                    "search": "Buscar:",
+                                    "paginate": {
+                                        "next": "Siguiente",
+                                        "previous": "Anterior"
+                                    }
+
+                                }
 
                             });
                         });
