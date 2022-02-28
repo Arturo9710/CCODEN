@@ -65,7 +65,7 @@
                             <p class='text-danger'>{{ $errors->first('clave_socio') }}</p>
                         @endif
                     </label>
-                    <input type="number" name="clave_socio" class="form-control form-control-user" id="clave_socio"
+                    <input type="text" name="clave_socio" class="form-control form-control-user" id="clave_socio"
                         value="{{ old('clave_socio') }}" placeholder="Codigo Socio">
                 </div>
                 <label for="dni">Género:</label>

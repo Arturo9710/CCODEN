@@ -13,7 +13,7 @@ class ControllerEntrevista extends Controller
 
     function __contruct()
     {
-        $this->middleware('auth');
+    $this->middleware('auth');
     $this->middleware('permission:ver-entrevista|crear-entrevista|editar-entrevista|desactivar-entrevista',['only'=>['index']]); 
     $this->middleware('permission:crear-entrevista',['only'=>['create','store']]); 
     $this->middleware('permission:editar-entrevista',['only'=>['edit','update']]);     

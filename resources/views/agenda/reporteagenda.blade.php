@@ -10,9 +10,9 @@
     <div class="container">
         <h1>Reporte Telefonia</h1>
         <br>
-        @can('crear-agenda')
+
         <a href="{{ route('agenda') }}">
-         @endcan   
+
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fa fa-plus-circle" aria-hidden="true"></i> Crea nueva Telefonia</button>
         </a>
@@ -51,12 +51,7 @@
                                     <td>{{ $a->fecha }}</td>
                                     <td>{{ $a->hora }}</td>
 
-<<<<<<< HEAD
                                     <td style="display:block;">
-=======
-                                    <td>
-                                        @can('editar-agenda')
->>>>>>> dc4b048352c50ef98f357e6af8f50d0984b8ad27
                                         <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
                                             class="btn btn-info"><i class="fas fa-edit"></i> Editar
                                         </a>
@@ -64,26 +59,8 @@
                                             <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
                                                 Eliminar</button>
                                         </a>
-<<<<<<< HEAD
 
 
-=======
-                                        @endcan
-                                        @if ($a->deleted_at)
-                                        @can('desactivar-agenda')
-                                            <a href="{{ route('activa_agenda', ['id_agenda' => $a->id_agenda]) }}">
-                                                <button type="button" class="btn btn-warning">Activar</button>
-                                            </a>
-                                            <a href="{{ route('borraAgenda', ['id_agenda' => $a->id_agenda]) }}">
-                                                <button type="button" class="btn btn-secondary">Borrar</button>
-                                            </a>
-                                        @else
-                                            <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
-                                                <button type="button" class="btn btn-danger">Desactivar</button>
-                                            </a>
-                                            @endcan
-                                        @endif
->>>>>>> dc4b048352c50ef98f357e6af8f50d0984b8ad27
                                     </td>
                                 </tr>
                             @endforeach
