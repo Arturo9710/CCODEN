@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
 @endsection
 
 @section('content')
@@ -10,7 +11,8 @@
         <h1>Reporte Socios</h1>
         <br>
         <a href="{{ route('empleados') }}">
-            <button type="button" class="btn btn-success">Alta Socio</button>
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-user-plus"
+                    aria-hidden="true"></i> Nuevo Socio</button>
         </a>
         <br>
         <br>
@@ -38,7 +40,7 @@
                         <tbody>
                             @foreach ($empleados as $empleado)
                                 <tr>
-                                    {{-- {{ dd($empleado) }} --}}
+
                                     <td>{{ $empleado->id_empleado }}</td>
                                     <td>{{ $empleado->alias }}</td>
                                     <td>{{ $empleado->nombre }}</td>
@@ -47,25 +49,20 @@
                                     <td>{{ $empleado->telefono }}</td>
 
                                     <td><img src="{{ asset('archivos/' . $empleado->foto) }}" height=50 width=50></td>
-                                    <td style="display:flex;">
+                                    <td style="display:block;">
                                         <a href="{{ route('modificaempleado', ['id_empleado' => $empleado->id_empleado]) }}"
-                                            class="btn btn-info">Editar
+                                            class="btn btn-info">
+
+                                            <i class="fas fa-user-edit"></i> Editar
                                         </a>
-                                        @if ($empleado->deleted_at)
-                                            <a
-                                                href="{{ route('activarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
-                                                <button type="button" class="btn btn-warning">Activar</button>
-                                            </a>
-                                            {{-- <a
-                                                href="{{ route('borraempleado', ['id_empleado' => $empleado->id_empleado]) }}">
-                                                <button type="button" class="btn btn-secondary">Borrar</button>
-                                            </a> --}}
-                                        @else
-                                            <a
-                                                href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
-                                                <button type="button" class="btn btn-danger">Desactivar</button>
-                                            </a>
-                                        @endif
+
+                                        <a
+                                            href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
+                                            <button type="button" class="btn btn-danger" id="btnElimina"
+                                                data-id="{{ $empleado->id_empleado }}"><i class="fas fa-user-times"></i>
+                                                Eliminar</button>
+                                        </a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -75,11 +72,50 @@
                     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
                     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
                     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
 
                     <script>
                         $(document).ready(function() {
-                            $('#dataTableEmpleados').DataTable();
+                            $('#dataTableEmpleados').DataTable({
+                                responsive: true,
+                                autoWidth: false,
+
+                                "language": {
+                                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                                    "zeroRecords": "Nada encontrado - disculpa",
+                                    "info": "Mostrando la página _PAGE_ de _PAGES_",
+                                    "infoEmpty": "No records available",
+                                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                                    "search": "Buscar:",
+                                    "paginate": {
+                                        "next": "Siguiente",
+                                        "previous": "Anterior"
+                                    }
+
+                                }
+                            });
                         });
+                    </script>
+                    <script>
+                        const btnEliminar = document.querySelector("#btnElimina");
+                        btnEliminar.addEventListener("click", function(e) {
+                            e.preventDefault();
+                            let alertaELimina = confirm("Estas seguro que deseas Eliminarlo ");
+                            var idDataElimina = $(this).attr('data-id');
+                            console.log(idDataElimina)
+                            let urlEliminar =
+                                "{{ route('desactivarempleado', ['id_empleado' => 'temp']) }}";
+                            urlELiminar2 = urlEliminar.replace('temp', idDataElimina);
+
+                            if (alertaELimina) {
+                                fetch(urlELiminar2).then(function(response) {
+                                    window.location.href =
+                                        "{{ route('reporteempleado') }}"
+                                })
+                            }
+
+                        })
                     </script>
                 @endsection
             </div>

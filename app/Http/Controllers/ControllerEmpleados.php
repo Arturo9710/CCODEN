@@ -8,6 +8,7 @@ use App\Models\empleados;
 use DataTables;
 use Session;
 
+
 class ControllerEmpleados extends Controller
 {
     
@@ -16,7 +17,7 @@ class ControllerEmpleados extends Controller
                              ->take(1)->get();
 
         $cuantos = count($consulta);
-        if($cuantos==0)
+        if($cuantos == 0)
         {
             $idsigue = 1;
         }
@@ -35,8 +36,8 @@ class ControllerEmpleados extends Controller
          'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
          'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
          'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
-         'telefono' => 'required|regex:/^[s0-9]{10}$/',
-         'fecha_nacimiento' => 'required|date',
+         'telefono' => 'required|regex:/^[0-9]{10}$/',
+         'clave_socio' => 'required|regex:/^[0-9]+$/',
          'foto'=>'image|mimes:jpg,png,jpeg'
          ]);
      
@@ -58,7 +59,7 @@ class ControllerEmpleados extends Controller
         $empleados->apellido_p =$request->apellido_p;
         $empleados->apellido_m = $request->apellido_m;
         $empleados->telefono = $request->telefono;
-        $empleados->fecha_nacimiento = $request->fecha_nacimiento;
+        $empleados->clave_socio = $request->clave_socio;
         $empleados->genero = $request->genero;
         $empleados->foto =$request->foto;
         $empleados->foto = $foto2;
@@ -90,14 +91,6 @@ class ControllerEmpleados extends Controller
      
     }
 
-    public function activarempleado($id_empleado){
-        $empleados = empleados::withTrashed()->where('id_empleado',$id_empleado)->restore();
-        Session::flash('mensaje',"El Socio
-        ha sido activado correctamente correctaemente");
-        return redirect()->route('reporteempleado');
-     
-    }
-
     public function borraempleado($id_empleado){
         $empleados = empleados::withTrashed()->find($id_empleado)->forceDelete();
         Session::flash('mensaje',"El Socio  
@@ -107,7 +100,7 @@ class ControllerEmpleados extends Controller
 
     public function modificaempleado($id_empleado){
         $empleados = empleados::withTrashed()->select('id_empleado','alias','nombre',
-        'apellido_p','apellido_m','telefono','genero','foto','fecha_nacimiento')
+        'apellido_p','apellido_m','telefono','genero','foto','clave_socio')
         ->where('id_empleado',$id_empleado)
         ->get();
         return view ('empleados.modificaempleado')
@@ -123,11 +116,11 @@ class ControllerEmpleados extends Controller
             'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'telefono' => 'required|regex:/^[0-9]{10}$/',
-            'fecha_nacimiento' => 'required|date',
+            'clave_socio' => 'required',
             'foto'=>'image|mimes:jpg,png,jpeg'
         ]);
 
-        // $aliasvalida = $request->alias('')
+   
 
         $file = $request->file('foto');
         if($file<>"")
@@ -144,7 +137,7 @@ class ControllerEmpleados extends Controller
         $empleados->apellido_p =$request->apellido_p;
         $empleados->apellido_m = $request->apellido_m;
         $empleados->telefono = $request->telefono;
-        $empleados->fecha_nacimiento = $request->fecha_nacimiento;
+        $empleados->clave_socio = $request->clave_socio;
         $empleados->genero = $request->genero;
         if($file<>"")
         {

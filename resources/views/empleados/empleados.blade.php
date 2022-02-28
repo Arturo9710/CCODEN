@@ -60,13 +60,13 @@
                         value="{{ old('telefono') }}" placeholder="Teléfono">
                 </div>
                 <div class="form-group">
-                    <label for="fecha_nacimiento">Fecha De Nacimiento:
-                        @if ($errors->first('fecha_nacimiento'))
-                            <p class='text-danger'>{{ $errors->first('fecha_nacimiento') }}</p>
+                    <label for="clave_socio">Codigo Socio:
+                        @if ($errors->first('clave_socio'))
+                            <p class='text-danger'>{{ $errors->first('clave_socio') }}</p>
                         @endif
                     </label>
-                    <input type="date" name="fecha_nacimiento" class="form-control form-control-user" id="fecha_nacimeinto"
-                        value="{{ old('fecha_nacimeinto') }}" placeholder="Fecha De Nacimiento">
+                    <input type="number" name="clave_socio" class="form-control form-control-user" id="clave_socio"
+                        value="{{ old('clave_socio') }}" placeholder="Codigo Socio">
                 </div>
                 <label for="dni">Género:</label>
                 <div class="custom-control custom-radio">
@@ -93,6 +93,4 @@
                 </div>
         </div>
     </div>
-
-    <script src={{ asset('js/miapp.js') }}></script>
 @endsection

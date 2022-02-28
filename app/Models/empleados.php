@@ -18,8 +18,8 @@ class empleados extends Model
         'nombre',
         'apellido_p',
         'apellido_m',
-        'telefono',
-        'fecha_nacimiento',
+        'telefono',     
+        'clave_socio',
         'genero',
         'foto'];      
 }

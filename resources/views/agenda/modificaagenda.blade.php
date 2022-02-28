@@ -67,8 +67,19 @@
                             <p class='text-danger'>{{ $errors->first('telefono') }}</p>
                         @endif
                     </label>
+
                     <input type="text" name="telefono" class="form-control form-control-user" id="telefono"
                         value="{{ $agenda->telefono }}" placeholder="Teléfono">
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha:
+                        @if ($errors->first('fecha'))
+                            <p class='text-danger'>{{ $errors->first('fecha') }}</p>
+                        @endif
+                    </label>
+                    <input type="date" name="fecha" class="form-control form-control-user" id="fecha"
+                        value="{{ $agenda->fecha }}">
+
                 </div>
                 <div class="form-group">
                     <label for="hora">Hora:
@@ -78,6 +89,7 @@
                     </label>
                     <input type="time" name="hora" class="form-control form-control-user" id="hora"
                         value="{{ $agenda->hora }}">
+
                 </div>
 
                 <div class="form-group">
@@ -100,7 +112,7 @@
                         @endif
                     </label>
                     <input type="text" name="contesto" class="form-control form-control-user" id="contesto"
-                        value="{{ $agenda->contesto }}" placeholder="Contesto">
+                        placeholder="Contesto" value="{{ $agenda->contesto }}">
                 </div>
 
                 <div class="row">
@@ -111,6 +123,14 @@
     </div>
 
 
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var fecha = new Date();
+            var fechacambio = fecha.toLocaleString();
+            let idhora = document.querySelector("#hora").value = fechacambio;
 
-
+            console.log(fecha.toLocaleString());
+            console.log(idhora);
+        })
+    </script> --}}
 @endsection
