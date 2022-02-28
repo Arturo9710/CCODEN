@@ -54,29 +54,13 @@
                                     <td style="display:block;">
                                         <a href="{{ route('modificaempleado', ['id_empleado' => $empleado->id_empleado]) }}"
                                             class="btn btn-info">
-<<<<<<< HEAD
+
                                             <i class="fas fa-user-edit"></i> Editar
                                         </a>
-
                                         <a href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
                                             <button type="button" class="btn btn-danger" id="btnElimina"
                                                 data-id="{{ $empleado->id_empleado }}"><i class="fas fa-user-times"></i>
                                                 Eliminar</button>
-                                        </a>
-
-=======
-
-                                            <i class="fas fa-user-edit"></i> Editar
-                                        </a>
-
-                                        <a
-                                            href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
-                                            <button type="button" class="btn btn-danger" id="btnElimina"
-                                                data-id="{{ $empleado->id_empleado }}"><i class="fas fa-user-times"></i>
-                                                Eliminar</button>
-                                        </a>
-
->>>>>>> 7fa44d1b65b7664f67089d0c78cc779adad99a46
                                     </td>
                                 </tr>
                             @endforeach
