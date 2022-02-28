@@ -16,7 +16,7 @@ class Agenda extends Migration
 
         Schema::create('agenda', function (Blueprint $table) {
             $table->bigIncrements('id_agenda');
-            $table->string('seguimineto',100);
+            $table->string('seguimiento',100);
             $table->string('alias',100);
             $table->string('nombre',100);
             $table->string('apellido_p',100);

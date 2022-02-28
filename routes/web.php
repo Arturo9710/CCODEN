@@ -6,6 +6,9 @@ use App\Http\Controllers\ControllerAgenda;
 use App\Http\Controllers\ControllerEntrevista;
 use App\Http\Controllers\ControllerCurso;
 use App\Http\Controllers\ControllerProductividad;
+////controladores para permisos
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
 
 Route::get('/',function(){
   return view('index');
@@ -66,3 +69,18 @@ Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproduc
 
 // Route::get('borraproductividad/{id_productividad}',[ControllerProductividad::class,'borraproductividad'])->name('borraproductividad');
 // Route::get('activa_productividad/{id_productividad}',[Controllerproductividad::class,'activarproductividad'])->name('activarproductividad');
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+
+
+
+
+////Rutas para los permisos login//
+Route::group(['middleware' => ['auth']], function(){
+  Route::resource('roles', RolController::class);
+  Route::resource('usuarios', UsuarioController::class);
+  
+});

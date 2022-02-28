@@ -9,9 +9,11 @@
     <div class="container">
         <h1>REPORTE ENTREVISTA</h1>
         <br>
+        @can('crear-entrevista')
         <a href="{{ route('entrevista') }}">
             <button type="button" class="btn btn-success">Alta Entrevista</button>
         </a>
+<<<<<<< HEAD
 
         <!-----------------------------------Inicio Modal------------------------------------------------------------>
 
@@ -32,6 +34,9 @@
             </div>
 
         </div>
+=======
+        @endcan
+>>>>>>> dc4b048352c50ef98f357e6af8f50d0984b8ad27
         <br>
         <br>
         <div class="card shadow mb-1">
@@ -70,6 +75,7 @@
                                     <td>{{ $entrevista->status }}</td>
 
                                     <td style="display:flex;">
+<<<<<<< HEAD
                                         <a
                                             href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                             <button type="button" class="btn btn-info">editar</button>
@@ -88,6 +94,27 @@
                                                 href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                                 <button type="button" class="btn btn-danger">Desactiva</button>
                                             </a>
+=======
+
+                                    @can(editar-entrevista)
+                                    <a href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                    <button type="button" class="btn btn-info">editar</button>
+                                        </a>
+                                        @endcan
+                                        @if($entrevista->deleted_at)
+                                        @can('desactivar-entrevista')
+                                        <a href="{{ route('activarentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                        <button type="button" class="btn btn-warning">Activar</button>
+                                        </a>  
+                                        <a href="{{ route('borraentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                        <button type="button" class="btn btn-secondary">Borrar</button>
+                                        </a>  
+                                        @else
+                                        <a href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                        <button type="button" class="btn btn-danger">Desactiva</button>
+                                        </a> 
+                                        @endcan
+>>>>>>> dc4b048352c50ef98f357e6af8f50d0984b8ad27
                                         @endif
                                     </td>
                                 </tr>
