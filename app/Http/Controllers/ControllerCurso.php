@@ -9,7 +9,14 @@ use Session;
 
 class ControllerCurso extends Controller
 {
-    
+    function __contruct()
+    {
+        $this->middleware('auth');
+    $this->middleware('permission:ver-curso|crear-curso|editar-curso|desactivar-curso',['only'=>['index']]); 
+    $this->middleware('permission:crear-curso',['only'=>['create','store']]); 
+    $this->middleware('permission:editar-curso',['only'=>['edit','update']]);     
+    $this->middleware('permission:borrar-curso',['only'=>['destroy']]);     
+}
     public function curso(){
 
         $consulta = curso::orderBy('id_curso','DESC')

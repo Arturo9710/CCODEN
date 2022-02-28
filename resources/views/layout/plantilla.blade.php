@@ -33,7 +33,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -70,6 +70,20 @@
                 <a class="nav-link" href={{ route('curso') }}>
                     <i class="fas fa-chalkboard-teacher"></i>
                     <span>Curso</span></a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="/usuarios">
+
+                    <i class='fas fa-users'></i>
+                    <span>Usuarios</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/roles">
+
+                    <i class='fas fa-building'></i>
+                    <span>Roles</span></a>
             </li>
 
             <li class="nav-item">
@@ -314,25 +328,25 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
+    <!-- Logout Modal
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"></span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Selecciona "Salir" si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="">Salir</a>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>

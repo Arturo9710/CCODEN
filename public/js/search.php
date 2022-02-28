@@ -1,5 +1,5 @@
 <?php  
- $connect = mysqli_connect("localhost", "root", "", "ccoden_base");  
+ $connect = mysqli_connect("localhost", "root", "", "ccoden");  
  if(isset($_POST["query"]))  
  {  
       $output = '';  

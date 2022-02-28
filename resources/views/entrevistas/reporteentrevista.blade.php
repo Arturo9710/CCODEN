@@ -12,8 +12,8 @@
         <a href="{{ route('entrevista') }}">
             <button type="button" class="btn btn-success">Alta Entrevista</button>
         </a>
-
-        <!-----------------------------------Inicio Modal------------------------------------------------------------>
+        <!-----------------------------------Inicio
+                                    Modal------------------------------------------------------------>
 
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn btn-success">Open Modal</button>
@@ -32,6 +32,8 @@
             </div>
 
         </div>
+
+
         <br>
         <br>
         <div class="card shadow mb-1">

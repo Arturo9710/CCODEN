@@ -11,6 +11,14 @@ use Session;
 class ControllerEntrevista extends Controller
 {
 
+    function __contruct()
+    {
+    $this->middleware('auth');
+    $this->middleware('permission:ver-entrevista|crear-entrevista|editar-entrevista|desactivar-entrevista',['only'=>['index']]); 
+    $this->middleware('permission:crear-entrevista',['only'=>['create','store']]); 
+    $this->middleware('permission:editar-entrevista',['only'=>['edit','update']]);     
+    $this->middleware('permission:borrar-entrevista',['only'=>['destroy']]);     
+}
     public function buscador(Request $request){
         $agenda = $request->get('agenda');
         $querys = agenda::where('nombre','LIKE','%'.$agenda.'%')->get();

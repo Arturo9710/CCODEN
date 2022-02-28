@@ -10,10 +10,12 @@
     <div class="container">
         <h1>Reporte Socios</h1>
         <br>
+
         <a href="{{ route('empleados') }}">
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-user-plus"
                     aria-hidden="true"></i> Nuevo Socio</button>
         </a>
+
         <br>
         <br>
         <div class="card shadow mb-1">
@@ -52,6 +54,7 @@
                                     <td style="display:block;">
                                         <a href="{{ route('modificaempleado', ['id_empleado' => $empleado->id_empleado]) }}"
                                             class="btn btn-info">
+<<<<<<< HEAD
                                             <i class="fas fa-user-edit"></i> Editar
                                         </a>
 
@@ -61,6 +64,19 @@
                                                 Eliminar</button>
                                         </a>
 
+=======
+
+                                            <i class="fas fa-user-edit"></i> Editar
+                                        </a>
+
+                                        <a
+                                            href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
+                                            <button type="button" class="btn btn-danger" id="btnElimina"
+                                                data-id="{{ $empleado->id_empleado }}"><i class="fas fa-user-times"></i>
+                                                Eliminar</button>
+                                        </a>
+
+>>>>>>> 7fa44d1b65b7664f67089d0c78cc779adad99a46
                                     </td>
                                 </tr>
                             @endforeach

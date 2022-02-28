@@ -10,7 +10,9 @@
     <div class="container">
         <h1>Reporte Telefonia</h1>
         <br>
+
         <a href="{{ route('agenda') }}">
+
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fa fa-plus-circle" aria-hidden="true"></i> Crea nueva Telefonia</button>
         </a>

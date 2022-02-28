@@ -56,8 +56,13 @@
                             <p class='text-danger'>{{ $errors->first('clave_socio') }}</p>
                         @endif
                     </label>
+<<<<<<< HEAD
                     <input type="number" name="clave_socio" class="form-control form-control-user" id="clave_socio"
                         value="{{ $empleados->clave_socio }}" placeholder="Teléfono">
+=======
+                    <input type="text" name="clave_socio" class="form-control form-control-user" id="clave_socio"
+                        value="{{ $empleados->clave_socio }}" placeholder="Clave Socio">
+>>>>>>> 7fa44d1b65b7664f67089d0c78cc779adad99a46
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:
