@@ -10,13 +10,9 @@
             <form action="{{ route('guardacambios_empleados') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="nombre">ID Socio:
-                        @if ($errors->first('id_empleado'))
-                            <p class='text-danger'>{{ $errors->first('id_empleado') }}</p>
-                        @endif
-                    </label>
+
                     <input type="text" name="id_empleado" class="form-control form-control-user" id="id_empleado"
-                        value="{{ $empleados->id_empleado }}" readonly='readonly' placeholder="ID Socio">
+                        value="{{ $empleados->id_empleado }}" readonly='readonly' placeholder="ID Socio" hidden>
                 </div>
                 <div class="form-group">
                     <label for="nombre">Alias:
@@ -46,13 +42,22 @@
                         value="{{ $empleados->apellido_p }}" placeholder="Primer Apellido">
                 </div>
                 <div class="form-group">
-                    <label for="nombre">Segundo Apellido:
+                    <label for="apellido_m">Segundo Apellido:
                         @if ($errors->first('apellido_m'))
                             <p class='text-danger'>{{ $errors->first('apellido_m') }}</p>
                         @endif
                     </label>
                     <input type="text" name="apellido_m" class="form-control form-control-user" id="apellido_m"
                         value="{{ $empleados->apellido_m }}" placeholder="Segundo Apellido">
+                </div>
+                <div class="form-group">
+                    <label for="clave_socio">Clave Socio:
+                        @if ($errors->first('clave_socio'))
+                            <p class='text-danger'>{{ $errors->first('clave_socio') }}</p>
+                        @endif
+                    </label>
+                    <input type="number" name="clave_socio" class="form-control form-control-user" id="clave_socio"
+                        value="{{ $empleados->clave_socio }}" placeholder="Teléfono">
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:
@@ -63,15 +68,7 @@
                     <input type="number" name="telefono" class="form-control form-control-user" id="telefono"
                         value="{{ $empleados->telefono }}" placeholder="Teléfono">
                 </div>
-                <div class="form-group">
-                    <label for="fecha_nacimiento">Fecha De Nacimiento:
-                        @if ($errors->first('fecha_nacimiento'))
-                            <p class='text-danger'>{{ $errors->first('fecha_nacimiento') }}</p>
-                        @endif
-                    </label>
-                    <input type="date" name="fecha_nacimiento" class="form-control form-control-user" id="fecha_nacimeinto"
-                        value="{{ $empleados->fecha_nacimiento }}" placeholder="Fecha De Nacimiento">
-                </div>
+
                 <label for="dni">Género:</label>
                 @if ($empleados->genero == 'F')
                     <div class="custom-control custom-radio">

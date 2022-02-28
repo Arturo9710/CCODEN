@@ -20,6 +20,7 @@ class agenda extends Model
         'apellido_m',
         'telefono',
         'edad',
+        'fecha',
         'hora',
         'publicidad',
         'contesto',

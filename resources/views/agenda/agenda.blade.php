@@ -4,7 +4,7 @@
 
     <div class="col-lg-7"
         style="
-                                                                                                                                                                                                                                        margin: 0 auto;">
+                                                                                                                                                                                                                                                            margin: 0 auto;">
         <div class="  p-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">TELEFONIA</h1>
@@ -75,12 +75,21 @@
                         value="{{ old('edad') }}" placeholder="Edad">
                 </div>
                 <div class="form-group">
+                    <label for="fecha">Fecha:
+                        @if ($errors->first('fecha'))
+                            <p class='text-danger'>{{ $errors->first('fecha') }}</p>
+                        @endif
+                    </label>
+                    <input type="date" name="fecha" class="form-control form-control-user" id="fecha"
+                        value="{{ old('fecha') }}">
+                </div>
+                <div class="form-group">
                     <label for="hora">Hora:
                         @if ($errors->first('hora'))
                             <p class='text-danger'>{{ $errors->first('hora') }}</p>
                         @endif
                     </label>
-                    <input type="datetime-local" name="hora" class="form-control form-control-user" id="hora"
+                    <input type="time" name="hora" class="form-control form-control-user" id="hora"
                         value="{{ old('hora') }}">
                 </div>
 
@@ -91,11 +100,12 @@
                         @endif
                     </label>
                     <select name='publicidad' class="custom-select">
-                        <option>Seleccione Publicidad</option>
+                        <option>---</option>
                         <option value="facebook">Facebook</option>
                         <option value="cartel">Cartel</option>
                         <option value="propaganda">Propaganda</option>
                         <option value="hawaina">Hawaina</option>
+                        <option value="otro">Otro</option>
                     </select>
                 </div>
                 <div class="form-group">

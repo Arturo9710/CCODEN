@@ -12,7 +12,7 @@
         <br>
         <a href="{{ route('agenda') }}">
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Crea nueva Telefonia</button>
+                    class="fa fa-plus-circle" aria-hidden="true"></i> Crea nueva Telefonia</button>
         </a>
         <br>
         <br>
@@ -32,8 +32,7 @@
                                 <th>Seguimiento</th>
                                 <th>Alias</th>
                                 <th>Nombre</th>
-                                <th>Apellido Paterno</th>
-                                <th>Apellido Materno</th>
+
                                 <th>Hora</th>
                                 <th>Publicidad</th>
                                 <th>Operaciones</th>
@@ -47,28 +46,18 @@
                                     <td>{{ $a->seguimiento }}</td>
                                     <td>{{ $a->alias }}</td>
                                     <td>{{ $a->nombre }}</td>
-                                    <td>{{ $a->apellido_p }}</td>
-                                    <td>{{ $a->apellido_m }}</td>
+                                    <td>{{ $a->fecha }}</td>
                                     <td>{{ $a->hora }}</td>
-                                    <td>{{ $a->publicidad }}</td>
 
-                                    <td>
+                                    <td style="display:block;">
                                         <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
-                                            class="btn btn-info">Editar
+                                            class="btn btn-info"><i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
+                                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
+                                                Eliminar</button>
                                         </a>
 
-                                        @if ($a->deleted_at)
-                                            <a href="{{ route('activa_agenda', ['id_agenda' => $a->id_agenda]) }}">
-                                                <button type="button" class="btn btn-warning">Activar</button>
-                                            </a>
-                                            <a href="{{ route('borraAgenda', ['id_agenda' => $a->id_agenda]) }}">
-                                                <button type="button" class="btn btn-secondary">Borrar</button>
-                                            </a>
-                                        @else
-                                            <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
-                                                <button type="button" class="btn btn-danger">Desactivar</button>
-                                            </a>
-                                        @endif
 
                                     </td>
                                 </tr>

@@ -27,6 +27,7 @@ class ControllerAgenda extends Controller
             'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,ñ]+$/',
             'telefono' => 'required|regex:/^[0-9]{10}$/',
             'edad' => 'required|regex:/^[0-9]{2}$/',
+            'fecha' => 'required',
             'hora' => 'required',
             'publicidad' => 'required',
             'contesto' => 'required',
@@ -44,6 +45,7 @@ class ControllerAgenda extends Controller
         $agenda->apellido_m   = $request->apellido_m;
         $agenda->telefono     = $request->telefono;
         $agenda->edad         = $request->edad;
+        $agenda->fecha         = $request->fecha;
         $agenda->hora         = $request->hora;
         $agenda->publicidad   = $request->publicidad;
         $agenda->contesto     = $request->contesto;
@@ -62,13 +64,12 @@ class ControllerAgenda extends Controller
         'seguimiento',
         'alias',
         'nombre',
-        'apellido_p',
-        'apellido_m',
         'telefono',
+        'fecha',
         'hora',
-        'publicidad',
         'deleted_at'])
     ->orderBy('agendas.id_agenda')
+    ->where('deleted_at','=',null)
     ->get();
 
     return view ('agenda.reporteagenda')->with('agenda',$agenda);
@@ -82,22 +83,10 @@ class ControllerAgenda extends Controller
         return redirect()->route('reporteagenda');
 
     }
-    public function activa_agenda($id_agenda){
-        $agenda = agenda::withTrashed()->where('id_agenda',$id_agenda)->restore();
-        Session::flash('mensaje',"Agenda restaurada");
-        return redirect()->route('reporteagenda');
 
-    }
-
-
-    public function borraAgenda($id_agenda){
-      $agendas = agenda::withTrashed()->find($id_agenda)->forceDelete();
-      Session::flash('mensaje',"La agenda se borro permanentemente");
-      return redirect()->route('reporteagenda');
-      }
-
+ 
     public function modificaagenda($id_agenda){
-      $agenda = agenda::withTrashed()->select('id_agenda','seguimiento','alias','nombre','apellido_p','apellido_m','telefono','hora','publicidad','contesto')
+      $agenda = agenda::withTrashed()->select('id_agenda','seguimiento','alias','nombre','apellido_p','apellido_m','telefono','fecha','hora','publicidad','contesto')
       ->where('id_agenda',$id_agenda)
       ->get();
       return view ('agenda.modificaagenda')
@@ -107,7 +96,6 @@ class ControllerAgenda extends Controller
     public function guardacambiosAgenda(Request $request){
 
         
-        // dd($request);
         $this->validate($request,[
             'seguimiento' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'alias_clave' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -116,14 +104,16 @@ class ControllerAgenda extends Controller
             'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'telefono' => 'required|regex:/^[0-9]{10}$/',
             'edad' => 'required|regex:/^[0-9]{2}$/',
+            'fecha' => 'required',
             'hora' => 'required',
             'publicidad' => 'required',
             'contesto' => 'required',
             
         ]);
-
+        
         
         $agendas = agenda::withTrashed()->find($request->id_agenda);
+       
             $agendas->id_agenda= $request->id_agenda;
             $agendas->seguimiento= $request->seguimiento;
             $agendas->alias = $request->alias_clave;
@@ -132,9 +122,11 @@ class ControllerAgenda extends Controller
             $agendas->apellido_m = $request->apellido_m;
             $agendas->telefono = $request->telefono;
             $agendas->edad = $request->edad;
+            $agendas->fecha = $request->fecha;
             $agendas->hora = $request->hora;
             $agendas->publicidad = $request->publicidad;
             $agendas->contesto = $request->contesto;
+            $agendas->empleado_id = 22;
             $agendas->save();
             Session::flash('mensaje',"La agenda $request->nombre
             ha sido modificado correctaemente");
