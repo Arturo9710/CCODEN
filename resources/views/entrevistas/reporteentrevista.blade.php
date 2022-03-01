@@ -10,13 +10,15 @@
         <h1>REPORTE ENTREVISTA</h1>
         <br>
         <a href="{{ route('entrevista') }}">
-            <button type="button" class="btn btn-success">Alta Entrevista</button>
+        <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fa fa-address-book" aria-hidden="true"></i> Crea nueva Entrevista</button>
         </a>
         <!-----------------------------------Inicio
                                     Modal------------------------------------------------------------>
 
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn" class="btn btn-success">Open Modal</button>
+        <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fa fa-check" aria-hidden="true"></i> Convenio</button>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -46,10 +48,10 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table  table-striped shadow-lg mt-4" id="dataTableEmpleados" width="100%" cellspacing="0">
-                        <thead class="bg-primary text-white">
+                        <thead class="bg-success text-white">
                             <tr>
                                 <th>#</th>
-                                <th>Nombre Agenda</th>
+                                <th>Nombre  Agenda</th>
                                 <th>Edad</th>
                                 <th>Citado</th>
                                 <th>Publicidad</th>
@@ -71,26 +73,14 @@
                                     <td>{{ $entrevista->oficina }}</td>
                                     <td>{{ $entrevista->status }}</td>
 
-                                    <td style="display:flex;">
-                                        <a
-                                            href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                            <button type="button" class="btn btn-info">editar</button>
+                                    <td style="display:block;">
+                                    <a href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}"
+                                            class="btn btn-info"><i class="fa fa-address-book"></i> Editar
                                         </a>
-                                        @if ($entrevista->deleted_at)
-                                            <a
-                                                href="{{ route('activarentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                                <button type="button" class="btn btn-warning">Activar</button>
-                                            </a>
-                                            <a
-                                                href="{{ route('borraentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                                <button type="button" class="btn btn-secondary">Borrar</button>
-                                            </a>
-                                        @else
-                                            <a
-                                                href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                                <button type="button" class="btn btn-danger">Desactiva</button>
-                                            </a>
-                                        @endif
+                                        <a href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                            <button type="button" class="btn btn-danger" id="btnElimina"
+                                                data-id="{{ $entrevista->id_entrevista }}"><i class="fas fa-user-times"></i>
+                                                Eliminar</button>
                                     </td>
                                 </tr>
                             @endforeach

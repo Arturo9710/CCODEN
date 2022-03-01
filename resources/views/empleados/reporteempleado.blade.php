@@ -12,7 +12,7 @@
         <br>
 
         <a href="{{ route('empleados') }}">
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-user-plus"
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fa fa-user-plus"
                     aria-hidden="true"></i> Nuevo Socio</button>
         </a>
 
@@ -27,8 +27,8 @@
             @endif
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table  table-striped shadow-lg mt-4" id="dataTableEmpleados" width="100%" cellspacing="0">
-                        <thead class="bg-primary text-white">
+                    <table class="table is-striped is-hoverable" id="dataTableEmpleados" width="100%" cellspacing="0">
+                        <thead class="bg-success text-white">
                             <tr>
                                 <th>#</th>
                                 <th>Alias</th>
