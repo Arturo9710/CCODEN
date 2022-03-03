@@ -10,8 +10,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 
 ////spatie///
-
-
 use Spatie\Permission\Traits\HasRoles; 
 
 

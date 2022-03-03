@@ -1,3 +1,4 @@
+@can('ver-socio')
 @extends('layout.plantilla')
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
@@ -10,12 +11,18 @@
     <div class="container">
         <h1>Reporte Socios</h1>
         <br>
+<<<<<<< HEAD
+       @can('crear-socio')
+         <a href="{{ route('empleados') }}">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-user-plus"
+=======
 
         <a href="{{ route('empleados') }}">
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fa fa-user-plus"
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                     aria-hidden="true"></i> Nuevo Socio</button>
         </a>
-
+        @endcan
         <br>
         <br>
         <div class="card shadow mb-1">
@@ -52,15 +59,29 @@
 
                                     <td><img src="{{ asset('archivos/' . $empleado->foto) }}" height=50 width=50></td>
                                     <td style="display:block;">
+                                    @can('editar-socio')
                                         <a href="{{ route('modificaempleado', ['id_empleado' => $empleado->id_empleado]) }}"
                                             class="btn btn-info">
+<<<<<<< HEAD
+                                            <i class="fas fa-user-edit"></i> Editar
+                                        </a>
+                                    @endcan  
+
+                                    @can('eliminar-socio')
+=======
 
                                             <i class="fas fa-user-edit"></i> Editar
                                         </a>
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                         <a href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
                                             <button type="button" class="btn btn-danger" id="btnElimina"
                                                 data-id="{{ $empleado->id_empleado }}"><i class="fas fa-user-times"></i>
                                                 Eliminar</button>
+<<<<<<< HEAD
+                                        </a>
+                                    @endcan
+=======
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                     </td>
                                 </tr>
                             @endforeach
@@ -121,3 +142,4 @@
     </div>
 </div>
 @endsection
+@endcan

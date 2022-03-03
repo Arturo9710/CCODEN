@@ -1,3 +1,4 @@
+@can('ver-entrevista')
 @extends('layout.plantilla')
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
@@ -9,10 +10,12 @@
     <div class="container">
         <h1>REPORTE ENTREVISTA</h1>
         <br>
+        @can('crear-entrevista')
         <a href="{{ route('entrevista') }}">
         <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
                     class="fa fa-address-book" aria-hidden="true"></i> Crea nueva Entrevista</button>
         </a>
+        @endcan
         <!-----------------------------------Inicio
                                     Modal------------------------------------------------------------>
 
@@ -73,6 +76,32 @@
                                     <td>{{ $entrevista->oficina }}</td>
                                     <td>{{ $entrevista->status }}</td>
 
+<<<<<<< HEAD
+                                    <td style="display:flex;">
+                                        @can('editar-entrevista')
+                                        <a
+                                            href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                            <button type="button" class="btn btn-info">editar</button>
+                                        </a>
+                                        @endcan
+                                        @if ($entrevista->deleted_at)
+                                            <a
+                                                href="{{ route('activarentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                                <button type="button" class="btn btn-warning">Activar</button>
+                                            </a>
+                                        @can('eliminar-entrevista')  
+                                            <a
+                                                href="{{ route('borraentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                                <button type="button" class="btn btn-secondary">Borrar</button>
+                                            </a>
+                                         @endcan   
+                                        @else
+                                            <a
+                                                href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                                <button type="button" class="btn btn-danger">Desactiva</button>
+                                            </a>
+                                        @endif
+=======
                                     <td style="display:block;">
                                     <a href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}"
                                             class="btn btn-info"><i class="fa fa-address-book"></i> Editar
@@ -81,6 +110,7 @@
                                             <button type="button" class="btn btn-danger" id="btnElimina"
                                                 data-id="{{ $entrevista->id_entrevista }}"><i class="fas fa-user-times"></i>
                                                 Eliminar</button>
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                     </td>
                                 </tr>
                             @endforeach
@@ -128,3 +158,4 @@
     </div>
 </div>
 @endsection
+@endcan

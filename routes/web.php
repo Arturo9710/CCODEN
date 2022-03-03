@@ -71,8 +71,14 @@ Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproduc
 
 
 // ////Rutas para los permisos login//
-// Route::group(['middleware' => ['auth']], function(){
-//   Route::resource('roles', RolController::class);
-//   Route::resource('usuarios', UsuarioController::class);
+Route::group(['middleware' => ['auth']], function(){
+   Route::resource('roles', RolController::class);
+   Route::resource('usuarios', UsuarioController::class);
   
-// });
+ });
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
