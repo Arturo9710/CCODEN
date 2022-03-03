@@ -11,9 +11,15 @@
     <div class="container">
         <h1>Reporte Socios</h1>
         <br>
+<<<<<<< HEAD
        @can('crear-socio')
          <a href="{{ route('empleados') }}">
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fa fa-user-plus"
+=======
+
+        <a href="{{ route('empleados') }}">
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fa fa-user-plus"
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                     aria-hidden="true"></i> Nuevo Socio</button>
         </a>
         @endcan
@@ -28,8 +34,8 @@
             @endif
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table  table-striped shadow-lg mt-4" id="dataTableEmpleados" width="100%" cellspacing="0">
-                        <thead class="bg-primary text-white">
+                    <table class="table is-striped is-hoverable" id="dataTableEmpleados" width="100%" cellspacing="0">
+                        <thead class="bg-success text-white">
                             <tr>
                                 <th>#</th>
                                 <th>Alias</th>
@@ -56,17 +62,26 @@
                                     @can('editar-socio')
                                         <a href="{{ route('modificaempleado', ['id_empleado' => $empleado->id_empleado]) }}"
                                             class="btn btn-info">
+<<<<<<< HEAD
                                             <i class="fas fa-user-edit"></i> Editar
                                         </a>
                                     @endcan  
 
                                     @can('eliminar-socio')
+=======
+
+                                            <i class="fas fa-user-edit"></i> Editar
+                                        </a>
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                         <a href="{{ route('desactivarempleado', ['id_empleado' => $empleado->id_empleado]) }}">
                                             <button type="button" class="btn btn-danger" id="btnElimina"
                                                 data-id="{{ $empleado->id_empleado }}"><i class="fas fa-user-times"></i>
                                                 Eliminar</button>
+<<<<<<< HEAD
                                         </a>
                                     @endcan
+=======
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                     </td>
                                 </tr>
                             @endforeach

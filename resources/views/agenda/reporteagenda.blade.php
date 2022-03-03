@@ -14,8 +14,8 @@
         @can('crear-agenda')
         <a href="{{ route('agenda') }}">
 
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fa fa-plus-circle" aria-hidden="true"></i> Crea nueva Telefonia</button>
+            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fa fa-phone-square" aria-hidden="true"></i> Crea nueva Telefonia</button>
         </a>
         @endcan
         <br>
@@ -30,13 +30,12 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table  table-striped shadow-lg mt-4" id="dataTableAgenda" width="100%" cellspacing="0">
-                        <thead class="bg-primary text-white">
+                        <thead class="bg-success text-white">
                             <tr>
                                 <th>#</th>
                                 <th>Seguimiento</th>
                                 <th>Alias</th>
                                 <th>Nombre</th>
-
                                 <th>Hora</th>
                                 <th>Publicidad</th>
                                 <th>Operaciones</th>
@@ -45,13 +44,13 @@
                         <tbody>
                             @foreach ($agenda as $a)
                                 <tr>
-
                                     <td>{{ $a->id_agenda }}</td>
                                     <td>{{ $a->seguimiento }}</td>
                                     <td>{{ $a->alias }}</td>
                                     <td>{{ $a->nombre }}</td>
-                                    <td>{{ $a->fecha }}</td>
                                     <td>{{ $a->hora }}</td>
+                                    <td>{{ $a->publicidad }}</td>
+                                   
 
                                     <td style="display:block;">
                                     @can('editar-agenda')
@@ -65,8 +64,11 @@
                                             <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
                                                 Eliminar</button>
                                         </a>
+<<<<<<< HEAD
                                     @endcan
 
+=======
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                     </td>
                                 </tr>
                             @endforeach

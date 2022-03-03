@@ -48,7 +48,15 @@ class ControllerEmpleados extends Controller
          'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
          'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
          'telefono' => 'required|regex:/^[0-9]{10}$/',
+<<<<<<< HEAD
          'clave_socio' => 'required|regex:/^[0-9]+$/',
+=======
+
+         'clave_socio' => 'required|regex:/^[0-9]+$/',
+
+         'clave_socio' => 'required',
+
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
          'foto'=>'image|mimes:jpg,png,jpeg'
          ]);
      

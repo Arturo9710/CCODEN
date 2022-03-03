@@ -12,14 +12,16 @@
         <br>
         @can('crear-entrevista')
         <a href="{{ route('entrevista') }}">
-            <button type="button" class="btn btn-success">Alta Entrevista</button>
+        <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fa fa-address-book" aria-hidden="true"></i> Crea nueva Entrevista</button>
         </a>
         @endcan
         <!-----------------------------------Inicio
                                     Modal------------------------------------------------------------>
 
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn" class="btn btn-success">Open Modal</button>
+        <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fa fa-check" aria-hidden="true"></i> Convenio</button>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -49,10 +51,10 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table  table-striped shadow-lg mt-4" id="dataTableEmpleados" width="100%" cellspacing="0">
-                        <thead class="bg-primary text-white">
+                        <thead class="bg-success text-white">
                             <tr>
                                 <th>#</th>
-                                <th>Nombre Agenda</th>
+                                <th>Nombre  Agenda</th>
                                 <th>Edad</th>
                                 <th>Citado</th>
                                 <th>Publicidad</th>
@@ -74,6 +76,7 @@
                                     <td>{{ $entrevista->oficina }}</td>
                                     <td>{{ $entrevista->status }}</td>
 
+<<<<<<< HEAD
                                     <td style="display:flex;">
                                         @can('editar-entrevista')
                                         <a
@@ -98,6 +101,16 @@
                                                 <button type="button" class="btn btn-danger">Desactiva</button>
                                             </a>
                                         @endif
+=======
+                                    <td style="display:block;">
+                                    <a href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}"
+                                            class="btn btn-info"><i class="fa fa-address-book"></i> Editar
+                                        </a>
+                                        <a href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
+                                            <button type="button" class="btn btn-danger" id="btnElimina"
+                                                data-id="{{ $entrevista->id_entrevista }}"><i class="fas fa-user-times"></i>
+                                                Eliminar</button>
+>>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                     </td>
                                 </tr>
                             @endforeach
