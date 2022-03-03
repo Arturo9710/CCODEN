@@ -13,6 +13,15 @@ class ControllerEmpleados extends Controller
 {
 
 
+    function __contruct()
+    {
+    
+    $this->middleware('permission:ver-socio|crear-socio|editar-socio|eliminar-socio',['only'=>['index']]); 
+    $this->middleware('permission:crear-socio',['only'=>['create','store']]); 
+    $this->middleware('permission:editar-socio',['only'=>['edit','update']]);     
+    $this->middleware('permission:eliminar-socio',['only'=>['destroy']]);     
+    }
+
     
     public function empleados(){
         $consulta = empleados::orderBy('id_empleado','DESC')
@@ -39,11 +48,7 @@ class ControllerEmpleados extends Controller
          'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
          'apellido_m' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
          'telefono' => 'required|regex:/^[0-9]{10}$/',
-<<<<<<< HEAD
          'clave_socio' => 'required|regex:/^[0-9]+$/',
-=======
-         'clave_socio' => 'required',
->>>>>>> 7fa44d1b65b7664f67089d0c78cc779adad99a46
          'foto'=>'image|mimes:jpg,png,jpeg'
          ]);
      

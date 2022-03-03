@@ -1,3 +1,4 @@
+@can('ver-agenda')
 @extends('layout.plantilla')
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
@@ -10,12 +11,13 @@
     <div class="container">
         <h1>Reporte Telefonia</h1>
         <br>
-
+        @can('crear-agenda')
         <a href="{{ route('agenda') }}">
 
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                     class="fa fa-plus-circle" aria-hidden="true"></i> Crea nueva Telefonia</button>
         </a>
+        @endcan
         <br>
         <br>
         <div class="card shadow mb-1">
@@ -52,14 +54,18 @@
                                     <td>{{ $a->hora }}</td>
 
                                     <td style="display:block;">
+                                    @can('editar-agenda')
                                         <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
                                             class="btn btn-info"><i class="fas fa-edit"></i> Editar
                                         </a>
+                                    @endcan
+                                    @can('eliminar-agenda')
+
                                         <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
                                             <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
                                                 Eliminar</button>
                                         </a>
-
+                                    @endcan
 
                                     </td>
                                 </tr>
@@ -102,3 +108,4 @@
     </div>
 </div>
 @endsection
+@endcan

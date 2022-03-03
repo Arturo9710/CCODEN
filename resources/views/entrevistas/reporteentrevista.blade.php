@@ -1,3 +1,4 @@
+@can('ver-entrevista')
 @extends('layout.plantilla')
 @section('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
@@ -9,9 +10,11 @@
     <div class="container">
         <h1>REPORTE ENTREVISTA</h1>
         <br>
+        @can('crear-entrevista')
         <a href="{{ route('entrevista') }}">
             <button type="button" class="btn btn-success">Alta Entrevista</button>
         </a>
+        @endcan
         <!-----------------------------------Inicio
                                     Modal------------------------------------------------------------>
 
@@ -72,19 +75,23 @@
                                     <td>{{ $entrevista->status }}</td>
 
                                     <td style="display:flex;">
+                                        @can('editar-entrevista')
                                         <a
                                             href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                             <button type="button" class="btn btn-info">editar</button>
                                         </a>
+                                        @endcan
                                         @if ($entrevista->deleted_at)
                                             <a
                                                 href="{{ route('activarentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                                 <button type="button" class="btn btn-warning">Activar</button>
                                             </a>
+                                        @can('eliminar-entrevista')  
                                             <a
                                                 href="{{ route('borraentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
                                                 <button type="button" class="btn btn-secondary">Borrar</button>
                                             </a>
+                                         @endcan   
                                         @else
                                             <a
                                                 href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
@@ -138,3 +145,4 @@
     </div>
 </div>
 @endsection
+@endcan
