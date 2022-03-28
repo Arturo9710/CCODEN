@@ -1,0 +1,72 @@
+
+.contenedorGeneral{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.encabezado{
+  width:100%;
+  height:10%
+  /* background: red; */
+}
+
+.nombreEmpresa{
+  float: left;
+  width: 85%;
+  font-size: 10pt;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+
+}.logo{
+  float: left;
+  width: 15%;
+  height: 120px;
+  /* background: rgb(8, 216, 199)!important; */
+  left: 0%;
+
+}
+
+.cuerpo1{
+  width:100%;
+  
+}
+
+
+.espacio{
+  /* position:absolute; */
+  width:100%;
+  margin-top: 400px;
+  margin-bottom: 40px;
+  min-height:40px;
+  /* padding:50px; */
+  /* border: 1px solid blue; */
+  background: transparent;
+}
+.ccodenimg{
+position: absolute;
+opacity: 0.1;
+margin-top: -95px;
+margin-left: 10px;
+z-index: -1;
+display: block;
+width: 43rem;
+height: 60rem;
+/* border: 1px solid #000; */
+}
+.inputBorder{
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-bottom: 0.1rem;
+  border-color: #000000;
+  margin: 10px;
+  margin : 0 auto;
+  height: 2%;
+  width: 40%;
+
+}
+.img{
+  background-image: url('http://localhost:8000/ccoden/public/archivos/coden.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}

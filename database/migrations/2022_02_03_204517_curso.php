@@ -43,6 +43,6 @@ class Curso extends Migration
      */
     public function down()
     {
-       Schema::drop('agenda');
+       Schema::drop('curso');
     }
 }

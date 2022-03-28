@@ -1,22 +1,22 @@
 @can('ver-agenda')
-@extends('layout.plantilla')
-@section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
-@endsection
-@section('titulo', 'Agenda Reportes')
+    @extends('layout.plantilla')
+    @section('css')
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
+            rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
+    @endsection
+    @section('titulo', 'Agenda Reportes')
 @section('content')
     <div class="container">
         <h1>Reporte Telefonia</h1>
         <br>
         @can('crear-agenda')
-        <a href="{{ route('agenda') }}">
+            <a href="{{ route('agenda') }}">
 
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                    class="fa fa-phone-square" aria-hidden="true"></i> Crea nueva Telefonia</button>
-        </a>
+                <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                        class="fa fa-phone-square" aria-hidden="true"></i> Crea nueva Telefonia</button>
+            </a>
         @endcan
         <br>
         <br>
@@ -50,25 +50,21 @@
                                     <td>{{ $a->nombre }}</td>
                                     <td>{{ $a->hora }}</td>
                                     <td>{{ $a->publicidad }}</td>
-                                   
+
 
                                     <td style="display:block;">
-                                    @can('editar-agenda')
-                                        <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
-                                            class="btn btn-info"><i class="fas fa-edit"></i> Editar
-                                        </a>
-                                    @endcan
-                                    @can('eliminar-agenda')
+                                        @can('editar-agenda')
+                                            <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
+                                                class="btn btn-info"><i class="fas fa-edit"></i> Editar
+                                            </a>
+                                        @endcan
+                                        @can('eliminar-agenda')
+                                            <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
+                                                <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
+                                                    Eliminar</button>
+                                            </a>
+                                        @endcan
 
-                                        <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
-                                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
-                                                Eliminar</button>
-                                        </a>
-<<<<<<< HEAD
-                                    @endcan
-
-=======
->>>>>>> f81252e78e5dfea7ce1035d9d38dcba4baa350b1
                                     </td>
                                 </tr>
                             @endforeach

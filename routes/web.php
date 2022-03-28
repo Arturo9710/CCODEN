@@ -76,7 +76,9 @@ Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproduc
 
 
 
-
+/***PDF */
+Route::get('vistaPrevia',[ControllerEntrevista::class,'vistaPrevia'])->name('vistaPrevia');
+Route::get('imprimir',[ControllerEntrevista::class,'imprimir'])->name('imprimir');
 
 // ////Rutas para los permisos login//
 Route::group(['middleware' => ['auth']], function(){

@@ -148,4 +148,13 @@ class ControllerEntrevista extends Controller
         ha sido modificada correctaemente");
         return redirect()->route('reporteentrevista');
     }
+    public function vistaPrevia(){
+    return view ('entrevistas.ejemplo_pdf');
+    }
+    public function imprimir(){
+   
+    $pdf = \PDF::loadView('entrevistas/ejemplo_pdf2');
+    return $pdf->stream('ejemplo_pdf.pdf');
+    }
+
 }
