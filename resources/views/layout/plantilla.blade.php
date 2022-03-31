@@ -70,7 +70,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                        <a class="collapse-item" href="{{ route('socio') }}">Listado de Socios</a>
+                        <a class="collapse-item" href="{{ url('socio') }}">Listado de Socios</a>
                         <a class="collapse-item" href="/horarios">Horarios</a>
                       
                     </div>
