@@ -53,8 +53,9 @@ Route::post('guardacambiosAgenda',[ControllerAgenda::class,'guardacambiosAgenda'
 
 
 //CURSO
-Route::get('curso',[ControllerCurso::class,'curso'])->name('curso');
-Route::post('guardarcurso',[ControllerCurso::class,'guardarcurso'])->name('guardarcurso');
+Route::get('/curso',[ControllerCurso::class,'curso'])->name('curso');
+Route::get('/cursoformulario',[ControllerCurso::class,'cursoformulario'])->name('cursoformulario');
+Route::post('/guardarcurso',[ControllerCurso::class,'guardarcurso'])->name('guardarcurso');
 
 
 
@@ -69,7 +70,6 @@ Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproduc
 
 // Route::get('borraproductividad/{id_productividad}',[ControllerProductividad::class,'borraproductividad'])->name('borraproductividad');
 // Route::get('activa_productividad/{id_productividad}',[Controllerproductividad::class,'activarproductividad'])->name('activarproductividad');
-
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Auth::routes();

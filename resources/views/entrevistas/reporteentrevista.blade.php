@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
             rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/modalCss.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
     @endsection
     @section('content')
         <div class="container">
@@ -15,31 +15,13 @@
                     <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
                             class="fa fa-address-book" aria-hidden="true"></i> Crea nueva Entrevista</button>
                 </a>
-                <a href="{{ route('vistaPrevia') }}">
-                    <button type="button" class="btn btn-success">PDF</button>
-                </a>
             @endcan
             <!-----------------------------------Inicio
-                                                    Modal------------------------------------------------------------>
+                                                                                                    Modal------------------------------------------------------------>
 
             <!-- Trigger/Open The Modal -->
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fa fa-check"
-                    aria-hidden="true"></i> Convenio</button>
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
 
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <form action="creaConvenio/generapdf.php" method="get">
-                        <p>Some text in the Modal..<input value="" type="text" class="inputBorder" id="p_input"
-                                name="p_input">gfgsdfhsdfhhsdgffh</p>
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-
-            </div>
 
 
             <br>
@@ -53,7 +35,8 @@
                 @endif
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table  table-striped shadow-lg mt-4" id="dataTableEmpleados" width="100%" cellspacing="0">
+                        <table class="table  table-striped shadow-lg mt-4" id="dataTableEntrevistas" width="100%"
+                            cellspacing="0">
                             <thead class="bg-success text-white">
                                 <tr>
                                     <th>#</th>
@@ -112,37 +95,31 @@
                         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
                         <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
                         <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+                        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+                        <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
 
                         <script>
                             $(document).ready(function() {
-                                $('#dataTableEmpleados').DataTable();
+                                $('#dataTableEntrevistas').DataTable({
+                                    responsive: true,
+                                    autoWidth: false,
+
+                                    "language": {
+                                        "lengthMenu": "Mostrar _MENU_ registros por página",
+                                        "zeroRecords": "Nada encontrado - disculpa",
+                                        "info": "Mostrando la página _PAGE_ de _PAGES_",
+                                        "infoEmpty": "No records available",
+                                        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                                        "search": "Buscar:",
+                                        "paginate": {
+                                            "next": "Siguiente",
+                                            "previous": "Anterior"
+                                        }
+
+                                    }
+
+                                });
                             });
-
-                            // Get the modal
-                            var modal = document.getElementById("myModal");
-
-                            // Get the button that opens the modal
-                            var btn = document.getElementById("myBtn");
-
-                            // Get the <span> element that closes the modal
-                            var span = document.getElementsByClassName("close")[0];
-
-                            // When the user clicks on the button, open the modal
-                            btn.onclick = function() {
-                                modal.style.display = "block";
-                            }
-
-                            // When the user clicks on <span> (x), close the modal
-                            span.onclick = function() {
-                                modal.style.display = "none";
-                            }
-
-                            // When the user clicks anywhere outside of the modal, close it
-                            window.onclick = function(event) {
-                                if (event.target == modal) {
-                                    modal.style.display = "none";
-                                }
-                            }
                         </script>
                     @endsection
                 </div>

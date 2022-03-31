@@ -29,8 +29,11 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Convenios</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"> <button id="myBtn"
-                                            class="btn btn-success"> Generar Convenio</button>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <button class="btn btn-success"> <a href="{{ route('vistaPrevia') }}"
+                                                style="text-decoration: none; color:white;">Generar
+                                                convenio</a>
+                                        </button>
                                     </div>
                                 </div>
 

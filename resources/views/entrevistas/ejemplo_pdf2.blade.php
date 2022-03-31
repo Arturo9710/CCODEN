@@ -3,7 +3,7 @@
 
 <head id="id_head">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Documento</title>
+    <title>REPORTE CCODEN</title>
 
     <link rel="stylesheet" type="text/css" href="home.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="print.css" media="print" />
@@ -12,25 +12,26 @@
 
 </head>
 
-<body style="font-size: 12pt;font-family: Arial;">
+<body style="font-family: Arial;">
 
     <form action="{{ route('imprimir') }}" method="get">
         <div class="contenedorGeneral" style="width: 90%;padding: 0% 5%;position:relative;">
             <div class="encabezado" style="display:flex;">
-                <div class="logo" style="width: 15%;">
+                <div class="logo">
                     {{-- <image src="" style="" class="img"> --}}
-                    <img src="archivos/coden.jpeg" style="width: 100%;">
+                    <img src="archivos/coden.jpeg" style="width: 150px; height: 70px; display:block; margin-top:0px">
                 </div>
                 <div class="nombreEmpresa" style="">
                     <h3> CCODEN TOLUCA</h3>
                     <h5> CAPACITACIÓN Y COMERCIALIZADORA PARA EL DESARROLLO DE NEGOCIOS</h5>
-                    <h2 style="font-weight: lighter;"> CONVENIO DE CONFORMIDAD</h5>
+                    <h2 style="font-weight: lighter; font-size:12px;"> CONVENIO DE CONFORMIDAD</h5>
                 </div>
 
             </div>
-            <br>
-            <br>
-            <div class="cuerpo1" style="display:flex; border-top: ridge;">
+
+
+            <div class="cuerpo1"
+                style="display:flex; border-top:2px solid #000;  margin-top:10px; padding:11.5px">
                 <p style="font-weight: bolder;"> Que firman, por una parte:
                     <span style="font-weight: bold"> <?php echo $_GET['p_inputnombre']; ?> </span>
 
@@ -75,61 +76,95 @@
             </div>
             <br>
             <br>
-            <br>
-            <div class="cuerpo2" style="line-height:30px; margin:10px 0px; float: left;">
-                <p style="font-weight: bolder;"> En el que manifiestan que se han enterado ambas partes de que:
-                <div class="contenido" style="text-align: justify; border-bottom: ridge;">
-                    </p>1.- No se ofrece un empleo, la oportunidad está basada en una distribución de perfumería que se
-                    otorga previa compra inicial, cuyo monto otorga el derecho a un determinado descuento. La función de
-                    esta distribución es ocasionar un desplazamiento de mercancías y de recomendar a otros potenciales
-                    distribuidores para formar una organización de ventas.
-                    <br>2.- La oportunidad de obtener ingresos se refiere a un negocio propiedad del cliente a través de
-                    la
-                    venta de fragancias y dichos ingresos estarán determinados por la función realizada (recomendar
-                    potenciales distribuidores), y por el trabajo de la organización de ventas del cliente en caso de
-                    que
-                    llegue a coordinar un grupo de ventas.
-                    <br>3.- Se deberá liquidar totalmente el importe de las compras al momento de realizar su pedido.
-                    <br>4.- No se pidió ninguna inversión o capital.
-                    <br>
-                    <div> 5.- La actividad primordial del <span style="font-weight: bold; text-transform:uppercase;">
-                            <?php echo $_GET['p_calidad']; ?> </span>
-                        será la de
-                        reclutar a nuevos prospectos a: Socio
-                        Junior, Socio Senior y Socio Master a través de los diferentes medios de publicidad.
+
+            <div class="cuerpo2" style="line-height:30px;  float: left; border-bottom:1px solid #000">
+                <p style="font-weight: bolder;"> En el que manifiestan que se han enterado ambas partes de que:</p>
+                <br>
+                <div class="contenido" style="text-align: justify; ">
+                    <p class="p-1"> 1.- No se ofrece un empleo, la oportunidad está basada en una distribución
+                        de perfumería que se
+                        otorga previa compra inicial, cuyo monto otorga el derecho a un determinado descuento. La
+                        función de
+                        esta distribución es ocasionar un desplazamiento de mercancías y de recomendar a otros
+                        potenciales
+                        distribuidores para formar una organización de ventas.
+                    </p>
+
+                    <p class="p-1"> 2.- La oportunidad de obtener ingresos se refiere a un negocio propiedad
+                        del cliente a través de
+                        la
+                        venta de fragancias y dichos ingresos estarán determinados por la función realizada (recomendar
+                        potenciales distribuidores), y por el trabajo de la organización de ventas del cliente en caso
+                        de
+                        que
+                        llegue a coordinar un grupo de ventas.
+                    </p>
+
+                    <p class="p-1">
+                        3.- Se deberá liquidar totalmente el importe de las compras al momento de realizar su pedido.
+                    </p>
+
+
+                    <p class="p-1">
+
+                        4.- No se pidió ninguna inversión o capital.
+                    </p>
+
+                    <div>
+                        <p class="p-1">
+                            5.- La actividad primordial del <span style="font-weight: bold; text-transform:uppercase;">
+                                <?php echo $_GET['p_calidad']; ?> </span>
+                            será la de
+                            reclutar a nuevos prospectos a: Socio
+                            Junior, Socio Senior y Socio Master a través de los diferentes medios de publicidad.
+                        </p>
                     </div>
-                    6.- La compraventa de perfumería no es obligatoria, sino a voluntad del nuevo <span
-                        style="font-weight: bold; text-transform:uppercase;"> <?php echo $_GET['p_calidad']; ?> </span>, por
-                    medio de: Muestrarios y Representantes.
-                    <br>7.- Queda entendido por ambas partes que: los ingresos dependerán únicamente de la venta directa
-                    que
-                    el firmante realice y de las comisiones que generen los patrocinados.
+                    <p class="p-1">
+                        6.- La compraventa de perfumería no es obligatoria, sino a voluntad del nuevo <span
+                            style="font-weight: bold; text-transform:uppercase;"> <?php echo $_GET['p_calidad']; ?> </span>, por
+                        medio de: Muestrarios y Representantes.
+                    </p>
+                    <p class="p-1">
+                        7.- Queda entendido por ambas partes que: los ingresos dependerán únicamente de la venta directa
+                        que
+                        el firmante realice y de las comisiones que generen los patrocinados.
+                    </p>
+
                 </div>
             </div>
-            <div class="cuerpo3" style="line-height:30px; margin:10px 0px ">
-                <p style="font-weight: bolder;"> Causas por las que CCODEN TOLUCA, puede dar por terminado el presente
+            <div class="cuerpo3" style="line-height:30px;">
+                <p style=" font-weight: bolder;"> Causas por las que CCODEN
+                    TOLUCA, puede dar por
+                    terminado el presente
                     convenio:</p>
-                - Adjudicarse invitados o prospectos a clientes de otras personas.
-                <br>- Hacer mal uso de la credencial y/o los derechos que ésta le otorga.
-                <br>- Invite a seleccionar prospectos de clientes con ofrecimiento de empleo, sueldo fijo,
-                prestaciones
-                u ofertas diferentes a las especificadas en este convenio.
-                <br>- En caso de ser menor de edad, en el momento que mi tutor retire su consentimiento.
-                <br>- Proceda en contra de la ética, bienestar o moral, desacreditando al grupo en el que se
-                desarrolla,
-                o a la empresa. - Divulgue, publique, difunda, comercialice o revele secretos industriales amparado
-                por
-                el art. 82 de la Ley de Propiedad Industrial.
-                <br>Cualquier inconformidad deberá ser avisada por ambas partes, antes de proceder con la autoridad
-                correspondiente que es la Procuraduría Federal del Consumidor (PROFECO) exclusivamente.
+                <br>
+                <p class="p-1">- Adjudicarse invitados o prospectos a clientes de otras personas.</p>
+                <p class="p-1">- Hacer mal uso de la credencial y/o los derechos que ésta le otorga.</p>
+                <p class="p-1">- Invite a seleccionar prospectos de clientes con ofrecimiento de empleo,
+                    sueldo fijo,
+                    prestaciones
+                    u ofertas diferentes a las especificadas en este convenio.</p>
+                <p class="p-1">- En caso de ser menor de edad, en el momento que mi tutor retire su
+                    consentimiento.</p>
+                <p class="p-1">- Proceda en contra de la ética, bienestar o moral, desacreditando al grupo en
+                    el que se
+                    desarrolla,
+                    o a la empresa. Divulgue, publique, difunda, comercialice o revele secretos industriales amparado
+                    por
+                    el art. 82 de la Ley de Propiedad Industrial.</p>
+                <p class="p-1">Cualquier inconformidad deberá ser avisada por ambas partes, antes de proceder
+                    con la autoridad
+                    correspondiente que es la Procuraduría Federal del Consumidor (PROFECO) exclusivamente.</p>
+
+
             </div>
-            <div class="footer" style="width:100%">
+            <div class="  footer" style="width:100%">
                 SUSCRIBO EL PRESENTE CONVENIO Y CARTA DE ADHESIÓN POR ASÍ CONVENIR A MIS INTERESES, ASÍ MISMO
                 MANIFIESTO
                 QUEDAR ENTERADO DE LO AQUÍ ESTABLECIDO
                 <br>
-                <br>
-                <div class="firmas" style="display : flex; margin-top: 15%;">
+
+                <div class="firmas" style="display : flex; margin-top: 5%;">
                     <div style="position: absolute;left: 10%;border-top: 1px solid;padding: 25px;">
                         <input type="text" style="border: none; text-transform:uppercase" value="<?php echo $_GET['p_inputnombre']; ?>">
                     </div>
@@ -138,7 +173,6 @@
                 </div>
 
             </div>
-
             <div class="espacio"></div>
             <div class="p-2">
                 <div class="image" style=" margin: 0 auto;">
@@ -157,7 +191,7 @@
                     
                     ?>
                         TOLUCA, EDO. DE MÉXICO A<?php echo $mesDesc; ?></div>
-                    <br>
+
                     <br>
                     <div>A QUIEN CORRESPONDA:</div><br><br>
 
