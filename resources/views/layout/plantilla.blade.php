@@ -45,13 +45,39 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                    REPORTES
+                </div>
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Panel de control</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    ADMINISTRACION
+                </div>
 
             <li class="nav-item">
-                <a class="nav-link" href={{ route('reporteempleado') }}>
-
-                    <i class='fas fa-users'></i>
-                    <span>Socios</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-users "></i>
+                    <span>Socios</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       
+                        <a class="collapse-item" href="/socio">Listado de Socios</a>
+                        <a class="collapse-item" href="/horarios">Horarios</a>
+                      
+                    </div>
+                </div>
             </li>
+
+                
 
             <li class="nav-item">
                 <a class="nav-link" href={{ route('reporteagenda') }}>
@@ -66,11 +92,7 @@
             </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link" href={{ route('curso') }}>
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <span>Curso</span></a>
-            </li>
+            
 
 
             <li class="nav-item">
@@ -84,8 +106,20 @@
 
                     <i class='fas fa-building'></i>
                     <span>Roles</span></a>
-            </li>
 
+            </li>
+            <hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+    IMPRIMIBLES
+</div>
+
+            <li class="nav-item">
+                <a class="nav-link" href={{ route('curso') }}>
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Curso</span></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href={{ route('reporteproductividad') }}>
                     <i class="fas fa-chart-line"></i>
