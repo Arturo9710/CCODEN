@@ -63,16 +63,7 @@ Route::get('borraAgenda/{id_agenda}',[ControllerAgenda::class,'borraAgenda'])->n
 Route::get('modificaagenda/{id_agenda}',[ControllerAgenda::class,'modificaagenda'])->name('modificaagenda');
 Route::post('guardacambiosAgenda',[ControllerAgenda::class,'guardacambiosAgenda'])->name('guardacambiosAgenda');
 
-<<<<<<< HEAD
 //CURSO
-=======
-
-/*
-|--------------------------------------------------------------------------
-| Rutas para los curso
-|--------------------------------------------------------------------------
-*/
->>>>>>> 37158d70223914fbad6b16c5ce997ab6bfe360cd
 Route::get('curso',[ControllerCurso::class,'curso'])->name('curso');
 Route::post('guardarcurso',[ControllerCurso::class,'guardarcurso'])->name('guardarcurso');
 
