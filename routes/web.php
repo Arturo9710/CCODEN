@@ -1,30 +1,43 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ControllerEmpleados;
+
 use App\Http\Controllers\ControllerAgenda;
 use App\Http\Controllers\ControllerEntrevista;
 use App\Http\Controllers\ControllerCurso;
 use App\Http\Controllers\ControllerProductividad;
-////controladores para permisos
+/*
+|--------------------------------------------------------------------------
+| CONTROLADOR PARA LOS PERMISOS
+|--------------------------------------------------------------------------
+*/
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\SocioController;
 
 Route::get('/',function(){
-  return view('index');
+  return view('auth.login');
 });
 
-//EMPLEADOS
-Route::get('empleados',[ControllerEmpleados::class,'empleados'])->name('empleados');
-Route::post('guardarempleado',[ControllerEmpleados::class,'guardarempleado'])->name('guardarempleado');
-Route::get('reporteempleado',[ControllerEmpleados::class,'reporteempleado'])->name('reporteempleado');
-Route::get('desactivarempleado/{id_empleado}',[ControllerEmpleados::class,'desactivarempleado'])->name('desactivarempleado');
-Route::get('activarempleado/{id_empleado}',[ControllerEmpleados::class,'activarempleado'])->name('activarempleado');
-Route::get('borraempleado/{id_empleado}',[ControllerEmpleados::class,'borraempleado'])->name('borraempleado');
-Route::get('modificaempleado/{id_empleado}',[ControllerEmpleados::class,'modificaempleado'])->name('modificaempleado');
-route::post('guardacambios_empleados',[ControllerEmpleados::class,'guardacambios_empleados'])->name('guardacambios_empleados');
 
-//ENTREVISTAS
+/*
+|--------------------------------------------------------------------------
+| Rutas para los socios
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('socio', SocioController::class);
+
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Rutas para entrevistas
+|--------------------------------------------------------------------------
+*/
 Route::get('buscador',[ControllerEntrevista::class,'buscador'])->name('buscador');
 Route::get('entrevista',[ControllerEntrevista::class,'entrevista'])->name('entrevista');
 Route::post('guardarentrevista',[ControllerEntrevista::class,'guardarentrevista'])->name('guardarentrevista');
@@ -35,22 +48,20 @@ Route::get('borraentrevista/{id_entrevista}',[ControllerEntrevista::class,'borra
 Route::get('modificaentrevista/{id_entrevista}',[ControllerEntrevista::class,'modificaentrevista'])->name('modificaentrevista');
 Route::post('guardacambios_entrevista',[ControllerEntrevista::class,'guardacambios_entrevista'])->name('guardacambios_entrevista');
 
-//AGENDA
+/*
+|--------------------------------------------------------------------------
+| Rutas para los agenda
+|--------------------------------------------------------------------------
+*/
 Route::get('agenda',[ControllerAgenda::class,'agenda'])->name('agenda');
 Route::post('guardaragenda',[ControllerAgenda::class,'guardaragenda'])->name('guardaragenda');
 Route::get('reporteagenda',[ControllerAgenda::class,'reporteagenda'])->name('reporteagenda');
-// Modifica Agenda
 Route::get('modificaagenda/{id_agenda}',[ControllerAgenda::class,'modificaagenda'])->name('modificaagenda');
-// Desactiva Agenda
 Route::get('desactivaagenda/{id_agenda}',[ControllerAgenda::class,'desactivaagenda'])->name('desactivaagenda');
-// Activa Agenda
 Route::get('activa_agenda/{id_agenda}',[ControllerAgenda::class,'activa_agenda'])->name('activa_agenda');
-// Borrar
 Route::get('borraAgenda/{id_agenda}',[ControllerAgenda::class,'borraAgenda'])->name('borraAgenda');
-// Modifica agendas
 Route::get('modificaagenda/{id_agenda}',[ControllerAgenda::class,'modificaagenda'])->name('modificaagenda');
 Route::post('guardacambiosAgenda',[ControllerAgenda::class,'guardacambiosAgenda'])->name('guardacambiosAgenda');
-
 
 //CURSO
 Route::get('/curso',[ControllerCurso::class,'curso'])->name('curso');
@@ -59,11 +70,13 @@ Route::post('/guardarcurso',[ControllerCurso::class,'guardarcurso'])->name('guar
 
 
 
-//PRODUCTIVIDAD
+/*
+|--------------------------------------------------------------------------
+| Rutas para productividad
+|--------------------------------------------------------------------------
+*/
 Route::get('productividad',[ControllerProductividad::class,'productividad'])->name('productividad');
-
 Route::post('guardarproductividad',[ControllerProductividad::class,'guardarproductividad'])->name('guardarproductividad');
-
 Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproductividad'])->name('reporteproductividad');
 
 // Route::get('desactivarproductividad/{id_productividad}',[ControllerProductividad::class,'desactivarproductividad'])->name('desactivarproductividad');
@@ -80,7 +93,11 @@ Route::get('reporteproductividad',[ControllerProductividad::class,'reporteproduc
 Route::get('vistaPrevia',[ControllerEntrevista::class,'vistaPrevia'])->name('vistaPrevia');
 Route::get('imprimir',[ControllerEntrevista::class,'imprimir'])->name('imprimir');
 
-// ////Rutas para los permisos login//
+/*
+|--------------------------------------------------------------------------
+| Rutas para persmisos y login
+|--------------------------------------------------------------------------
+*/
 Route::group(['middleware' => ['auth']], function(){
    Route::resource('roles', RolController::class);
    Route::resource('usuarios', UsuarioController::class);
@@ -92,3 +109,11 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/*
+|--------------------------------------------------------------------------
+| Rutas para los horarios
+|--------------------------------------------------------------------------
+*/
+
+Route::resource('horarios',App\Http\Controllers\HorarioController::class);

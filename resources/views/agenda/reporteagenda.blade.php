@@ -8,6 +8,7 @@
     @endsection
     @section('titulo', 'Agenda Reportes')
 @section('content')
+
     <div class="container">
         <h1>Reporte Telefonia</h1>
         <br>
@@ -52,6 +53,7 @@
                                     <td>{{ $a->publicidad }}</td>
 
 
+<<<<<<< HEAD
                                     <td style="display:block;">
                                         @can('editar-agenda')
                                             <a href="{{ route('modificaagenda', ['id_agenda' => $a->id_agenda]) }}"
@@ -65,6 +67,13 @@
                                             </a>
                                         @endcan
 
+=======
+                                        <a href="{{ route('desactivaagenda', ['id_agenda' => $a->id_agenda]) }}">
+                                            <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i>
+                                                Eliminar</button>
+                                        </a>
+                                        @endcan
+>>>>>>> d14b261ae482de4c044d0d607f9ed79557b2d6df
                                     </td>
                                 </tr>
                             @endforeach
