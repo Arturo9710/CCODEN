@@ -5,9 +5,7 @@
 @section('titulo', 'Entrevistas')
 @section('content')
 
-    <div class="col-lg-7"
-        style="
-                                                                                                                                            margin: 0 auto;">
+    <div class="col-lg-7" style=" margin: 0 auto;">
         <div class="p-5">
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">ENTREVISTAS</h1>
@@ -16,16 +14,16 @@
             <form action="{{ route('guardarentrevista') }}" method="POST" class="user">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="nombre">ID Entrevista:
+                    <label for="nombre">
                         @if ($errors->first('id_entrevista'))
                             <p class='text-danger'>{{ $errors->first('id_entrevista') }}</p>
                         @endif
                     </label>
                     <input type="text" name="id_entrevista" class="form-control form-control-user" id="id_entrevista"
-                        value="{{ $idsigue }}" readonly='readonly' placeholder="ID">
+                        value="{{ $idsigue }}" readonly='readonly' placeholder="ID" hidden>
                 </div>
                 <div class="form-group">
-
+                    <label for="nombre_agenda">Nombre</label>
                     <input type="text" name="nombre_agenda" class="form-control form-control-user" id="nombre_agenda"
                         value="{{ old('nombre_agenda') }}" placeholder="Nombre Agenda" onkeyup="autocompletar()">
                     <dl id="lista"></dl>
@@ -66,48 +64,7 @@
                     <input type="datetime" name="hora" class="form-control form-control-user" id="hora"
                         value="{{ old('hora') }}" placeholder="Hora">
                 </div>
-                <!--  <div class="form-group">
-                                                    <label for="oficina">Oficina:</label>
-                                                    <select name='oficina' class="custom-select">
-                                                        <option selected="">Seleccione Oficina</option>
-                                                        <option>101</option>
-                                                        <option>102</option>
-                                                        <option>103</option>
-                                                    </select>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                                        <label for="dni">Status:</label>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="status1" name="status" value="A" class="custom-control-input">
-                                                            <label class="custom-control-label" for="status1">Aceptado</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="status2" name="status" value="R" class="custom-control-input">
-                                                            <label class="custom-control-label" for="status2">Rechazado</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="status2" name="status" value="R" class="custom-control-input">
-                                                            <label class="custom-control-label" for="status2">Reprogramado</label>
-                                                        </div>
 
-                                                    </div>
-                                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                                        <label for="dni">Turno:</label>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="status1" name="status" value="Matutino" class="custom-control-input">
-                                                            <label class="custom-control-label" for="status1">Matutino</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio">
-                                                            <input type="radio" id="status2" name="status" value="R" class="custom-control-input">
-                                                            <label class="custom-control-label" for="status2">Vespertino</label>
-                                                        </div>
-
-
-                                                    </div>
-
-                                                </div>-->
-                <hr>
                 <div class="row">
                     <div class="col-xs-10 col-md-10"><input type="submit" value="Guardar"
                             class="btn btn-primary btn-user btn-block" title="Guardar datos ingresados"></div>
@@ -128,6 +85,7 @@
                         query: query
                     },
                     success: function(data) {
+
                         $('#lista').fadeIn().css("opacity", "1").removeAttr("hidden"); //Muestra la lista
                         $('#lista').html(data); //Coloca datos de la base
                         $('#lista dl dt').each(function(index, item) {

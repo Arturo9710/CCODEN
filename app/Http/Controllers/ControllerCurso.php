@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\curso;
+use App\Models\agenda;
 use DataTables;
 use Session;
 
 class ControllerCurso extends Controller
 {
+
     function __contruct()
     {
         $this->middleware('auth');
@@ -17,6 +19,26 @@ class ControllerCurso extends Controller
     $this->middleware('permission:editar-curso',['only'=>['edit','update']]);     
     $this->middleware('permission:eliminar-curso',['only'=>['destroy']]);     
 }
+    public function buscador(Request $request){
+    $agenda = $request->get('agenda');
+    $querys = agenda::where('nombre','LIKE','%'.$agenda.'%')->get();
+
+    $data =[];
+
+    foreach($querys as $query){
+    $data[] = [
+    'id_agenda' =>$query->id_agenda,
+    'nombre' =>$query->nombre,
+    'alias' =>$query->alias,
+    'seguimiento' =>$query->seguimiento,
+    'label' =>$query->id_agenda
+
+    ];
+    }
+    return $data;
+
+    return $query;
+    }
     public function curso(){
 
         $consulta = curso::orderBy('id_curso','DESC')
@@ -30,11 +52,13 @@ class ControllerCurso extends Controller
         else {
         $idsigue = $consulta[0]->id_curso + 1;
         }
-        return view ('curso.curso')
+        return view ('curso.reportecurso')
         ->with('idsigue',$idsigue);
         
     }
-
+    public function cursoformulario(){
+        return view('curso.curso');
+    }
     public function guardarcurso(Request $request){
     
         $this->validate($request,[

@@ -8,15 +8,14 @@
     @endsection
     @section('titulo', 'Agenda Reportes')
 @section('content')
-
     <div class="container">
-        <h1>Reporte Telefonia</h1>
+        <h1>Reporte Curso</h1>
         <br>
-        @can('crear-agenda')
-            <a href="{{ route('agenda') }}">
+        @can('crear-curso')
+            <a href="{{ route('cursoformulario') }}">
 
                 <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                        class="fa fa-phone-square" aria-hidden="true"></i> Crea nueva Telefonia</button>
+                        class="fa fa-phone-square" aria-hidden="true"></i> Crea nuevo Curso</button>
             </a>
         @endcan
         <br>
@@ -42,7 +41,7 @@
                                 <th>Operaciones</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @foreach ($agenda as $a)
                                 <tr>
                                     <td>{{ $a->id_agenda }}</td>
@@ -69,7 +68,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 @section('js')
                     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
