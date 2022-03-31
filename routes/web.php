@@ -26,7 +26,7 @@ Route::get('/',function(){
 |--------------------------------------------------------------------------
 */
 
-Route::resource('socio', SocioController::class);
+Route::get('socio',[SocioController::class,'index'])->name('socio');
 
 
 
