@@ -48,11 +48,11 @@
             <div class="sidebar-heading">
                     REPORTES
                 </div>
-            <li class="nav-item active">
-                <a class="nav-link" href="/">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Panel de control</span></a>
-            </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Panel de control</span></a>
+                </li>
 
             <hr class="sidebar-divider">
                 <!-- Heading -->
@@ -70,7 +70,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                        <a class="collapse-item" href="{{ url('socio') }}">Listado de Socios</a>
+                        <a class="collapse-item" href="{{ route('reporteempleado') }}">Listado de Socios</a>
                         <a class="collapse-item" href="{{ url('horarios') }}">Horarios</a>
                       
                     </div>
