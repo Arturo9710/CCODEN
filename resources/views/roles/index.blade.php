@@ -1,23 +1,25 @@
 @extends('layout.plantilla')
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h3 class="page__heading">Roles</h3>
-        </div>
-        <div class="section-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-        
-                        @can('crear-rol')
-                        <a class="btn btn-warning" href="{{ route('roles.create') }}">Nuevo</a>                        
-                        @endcan
-        
-                
-                            <table class="table table-striped mt-2">
-                                <thead style="background-color:#6777ef">                                                       
+<section class="container">
+    <h1>Roles</h1>
+    <br>
+   
+    <a href="{{ route('usuarios.create') }}"> <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fa fa-users" aria-hidden="true"></i> Nuevo </button>
+    </a>
+    <br>
+    <br>
+
+    <div class="card shadow mb-1">
+            <div class="card-header py-1">
+                <h6 class="m-0 font-weight-bold text-primary">Roles</h6>
+            </div>
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table  table-striped shadow-lg mt-4" id="dataTableAgenda" width="100%" cellspacing="0">
+                        <thead class="bg-success text-white">                                                  
                                     <th style="color:#fff;">Rol</th>
                                     <th style="color:#fff;">Acciones</th>
                                 </thead>  
@@ -41,14 +43,38 @@
                                 </tbody>               
                             </table>
 
-                            <!-- Centramos la paginacion a la derecha -->
-                            <div class="pagination justify-content-end">
-                                {!! $roles->links() !!} 
-                            </div>                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                            @section('js')
+                    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+
+                    <script>
+                        $(document).ready(function() {
+                            $('#dataTableAgenda').DataTable({
+                                responsive: true,
+                                autoWidth: false,
+
+                                "language": {
+                                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                                    "zeroRecords": "Nada encontrado - disculpa",
+                                    "info": "Mostrando la página _PAGE_ de _PAGES_",
+                                    "infoEmpty": "No records available",
+                                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                                    "search": "Buscar:",
+                                    "paginate": {
+                                        "next": "Siguiente",
+                                        "previous": "Anterior"
+                                    }
+
+                                }
+
+                            });
+                        });
+                    </script>
+                @endsection
+
+                   
+    </section>
 @endsection
