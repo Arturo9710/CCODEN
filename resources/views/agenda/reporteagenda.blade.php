@@ -6,17 +6,17 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css">
     @endsection
-    @section('titulo', 'Agenda Reportes')
+    @section('titulo', 'Telefonia')
 @section('content')
 
     <div class="container">
-        <h1>Reporte Telefonia</h1>
+        <h1>Listado Telefonia</h1>
         <br>
         @can('crear-agenda')
             <a href="{{ route('agenda') }}">
 
                 <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                        class="fa fa-phone-square" aria-hidden="true"></i> Crea nueva Telefonia</button>
+                        class="fa fa-phone-square" aria-hidden="true"></i> Agendar cita</button>
             </a>
         @endcan
         <br>

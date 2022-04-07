@@ -39,13 +39,16 @@ class SocioController extends Controller
      */
     public function store(Request $request)
     {
+
         $datosSocio = request()->except('_token');
+
         if($request->hasFile('Foto')){
             $datosSocio['Foto']=$request->file('Foto')->store('uploads','public');
         }
         Socio::insert($datosSocio);
 
-        return redirect('socio')->with('mensaje','Socio agregado con exito');
+        //return response()->json($datosSocio);
+        return redirect('socio')->with('mensaje','Socio agrefado con exito');
     }
 
     /**
@@ -54,14 +57,11 @@ class SocioController extends Controller
      * @param  \App\Models\Socio  $socio
      * @return \Illuminate\Http\Response
      */
-    
-    public function show($id)
-    {
-        $socio = Socio::find($id);
-
-        return view('socio.show', compact('socio'));
+    public function show()
+    {       
+        $datos['socios']=Socio::paginate(5);
+        return view('socio.show ', $datos);
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -72,8 +72,7 @@ class SocioController extends Controller
     public function edit($id)
     {   
         $socio=Socio::findOrFail($id);
-
-        return view('socio.edit',compact('socio') );
+        return view('socio.edit', compact('socio') );
     }
 
     /**
@@ -85,7 +84,7 @@ class SocioController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $datosSocio = request()->except(['_token','_method']);
+       $datosSocio = request()->except(['_token','_method']);
      
       if($request->hasFile('Foto')){
             $socio=Socio::FindOrFail($id);
@@ -110,11 +109,7 @@ class SocioController extends Controller
     public function destroy($id)
     {
         
-        $socio=Socio::findOrFail($id);
-        if(Storage::delete('public/'.$socio->Foto)){
-        Socio::destroy($id);
-        }
-           
-        return redirect('socio')->with('mensaje','Socio Borrad con exito');
+      Socio::destroy($id);
+      return redirect('socio');
     }
 }
