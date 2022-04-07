@@ -46,6 +46,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
+<<<<<<< HEAD
                 REPORTES
             </div>
             <li class="nav-item active">
@@ -53,6 +54,15 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Panel de control</span></a>
             </li>
+=======
+                    REPORTES
+                </div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Panel de control</span></a>
+                </li>
+>>>>>>> 0707e35ecd82482e8fcd159675e7e15ac7703ca6
 
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -69,8 +79,13 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+<<<<<<< HEAD
 
                         <a class="collapse-item" href="{{ url('socio') }}">Listado de Socios</a>
+=======
+                       
+                        <a class="collapse-item" href="{{ route('reporteempleado') }}">Listado de Socios</a>
+>>>>>>> 0707e35ecd82482e8fcd159675e7e15ac7703ca6
                         <a class="collapse-item" href="{{ url('horarios') }}">Horarios</a>
 
                     </div>
@@ -100,6 +115,8 @@
                     <i class="fas fa-clipboard-list"></i>
                     <span>Recepcion</span></a>
             </li>
+
+            
 
 
 

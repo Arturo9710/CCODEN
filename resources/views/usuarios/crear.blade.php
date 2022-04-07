@@ -1,15 +1,14 @@
 @extends('layout.plantilla')
 
 @section('content')
-    <section class="section">
-        <div class="section-header">
-            <h3 class="page__heading">Alta de Usuarios</h3>
-        </div>
-        <div class="section-body">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">    
+   
+        <div class="col-lg-7" style="margin: 0 auto;">
+        <div class="  p-5">
+ <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4"> Crear Usuario    </h1>
+                <hr>
+ </div>
+           
 
                         @if ($errors->any())                                                
                             <div class="alert alert-dark alert-dismissible fade show" role="alert">
@@ -17,7 +16,7 @@
                                 @foreach ($errors->all() as $error)                                    
                                     <span class="badge badge-danger">{{ $error }}</span>
                                 @endforeach                        
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <button type="button" class="form-control form-control-user" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             </div>
@@ -62,8 +61,5 @@
                         {!! Form::close() !!}
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  
     @endsection

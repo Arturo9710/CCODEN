@@ -15,6 +15,7 @@ use App\Http\Controllers\ControllerAsistencia;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\SocioController;
+use App\Http\Controllers\ControllerEmpleados;
 
 Route::get('/',function(){
   return view('auth.login');
@@ -27,7 +28,15 @@ Route::get('/',function(){
 |--------------------------------------------------------------------------
 */
 
-Route::get('socio',[SocioController::class,'index']);
+
+Route::get('empleados',[ControllerEmpleados::class,'empleados'])->name('empleados');
+Route::post('guardarempleado',[ControllerEmpleados::class,'guardarempleado'])->name('guardarempleado');
+Route::get('reporteempleado',[ControllerEmpleados::class,'reporteempleado'])->name('reporteempleado');
+Route::get('desactivarempleado/{id_empleado}',[ControllerEmpleados::class,'desactivarempleado'])->name('desactivarempleado');
+Route::get('activarempleado/{id_empleado}',[ControllerEmpleados::class,'activarempleado'])->name('activarempleado');
+Route::get('borraempleado/{id_empleado}',[ControllerEmpleados::class,'borraempleado'])->name('borraempleado');
+Route::get('modificaempleado/{id_empleado}',[ControllerEmpleados::class,'modificaempleado'])->name('modificaempleado');
+route::post('guardacambios_empleados',[ControllerEmpleados::class,'guardacambios_empleados'])->name('guardacambios_empleados');
 
 
 

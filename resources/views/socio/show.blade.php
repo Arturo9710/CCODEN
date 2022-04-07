@@ -16,7 +16,7 @@
                             <span class="card-title">Detalle de socio</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('horarios.index') }}">atras</a>
+                            <a class="btn btn-primary" href="{{ route('socio.index') }}">atras</a>
                         </div>
                     </div>
 

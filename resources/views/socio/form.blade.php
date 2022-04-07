@@ -1,22 +1,24 @@
 
-<div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">{{ $modo}} socio </h1>
-                <hr>
-            </div>
-<h1> </h1>
+
 <div class="col-lg-7" style="margin: 0 auto;">
-        <div class="  p-5">
+ <div class="  p-5">
+ <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">{{ $modo}} socio</h1>
+                <hr>
+ </div>
     <div class="form-group">       
     <label for="Codigo">Codigo</label>
-    <input type="text" name="Codigo"   value="{{ isset($socio->Codigo)?$socio->Codigo:'' }}" id="Codigo" class="form-control form-control-user"      >
+    <input type="text" name="Codigo"   value="{{ isset($socio->Codigo)?$socio->Codigo:'' }}" id="Codigo" class="form-control form-control-user">
     </div>
+
+    
     <div class="form-group">  
     <label for="Cargo">Cargo</label>
     <input type="text" name="Cargo"  value="{{ isset($socio->Cargo)?$socio->Cargo:'' }}"  id="Cargo" class="form-control form-control-user">
     </div>
     <div class="form-group">      
     <label for="Horario">Horario</label>
-    <input type="text" name="Horario"  value="{{ isset($socio->Horario)?$socio->Horario:'' }}" id="Horario" class="form-control form-control-user">
+    <input type="time" name="Horario"  value="{{ isset($socio->Horario)?$socio->Horario:'' }}" id="Horario" class="form-control form-control-user">
     </div>
     <div class="form-group"> 
     <label for="Nombre">Nombre</label>
@@ -56,4 +58,5 @@
     
     </div>
 
+    </div>
     

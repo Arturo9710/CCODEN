@@ -10,12 +10,10 @@
 @section('content')
 
     <div class="container">
-        <h1>Listado de Socios</h1>
+        <h1>Listado de usuarios</h1>
         <br>
         @can('crear-socio')
-        <a href="{{ url('socio/create') }}">
-
-            <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+        <a href="{{ url('socio/create') }}"> <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
                     class="fa fa-user" aria-hidden="true"></i> Nuevo Socio</button>
         </a>
         @endcan
@@ -41,7 +39,7 @@
 
                     <tbody>
                           @foreach( $socios as $socio)
-                           <tr>
+                        <tr>
                            <td>{{ $socio->id}} </td>
                             <td>
                             <img src="{{ asset('storage').'/'.$socio->Foto }}"  width="100" alt="">
@@ -49,20 +47,29 @@
                             <td>
                             <a href="{{ url('/socio/'.$socio->id) }}">{{ $socio->Nombre}}</a> </td>
                             <td>{{ $socio->Codigo}} </td>
-                            <td style="display:block;">
-                            <a href="{{ url('/socio/'.$socio->id.'/edit')}}" class="btn btn-info">
-                            <i class="fas fa-edit"></i>Editar  
-                            </a>
-                             <form action="{{ url('/socio/'.$socio->id) }}" method="post">
-                            @csrf
-                             {{ method_field('DELETE') }}
-                            <input type="submit" class="btn btn-danger" onclick="return confirm('Quieres borrar?')" 
-                            value="Borrar">
-                            </form>
-                            </td>
-                            </tr>
+
+
+
+                            <td>
+                            
+
+                            
+             
+
+            <form action="{{ url('/socio/'.$socio->id) }}" method="post">
+            <a class="btn btn-sm btn-success" href="{{ url('/socio/'.$socio->id.'/edit') }}"><i class="fa fa-fw fa-edit"></i>
+             Editar 
+             </a>  
+             
+             @csrf
+             {{ method_field('DELETE')}}
+             <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+            </form>
+            </td>   
+
+                         </tr>
                          @endforeach
-                        </tbody>
+                    </tbody>
                         </table>
                 @section('js')
                     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

@@ -5,39 +5,30 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
+    
 
-                            <span id="card_title">
-                                {{ __('Horario') }}
-                            </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('horarios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear') }}
-                                </a>
-                              </div>
-                        </div>
-                    </div>
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
-                        </div>
-                    @endif
+<div class="container">
 
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
+<a href="{{ url('horarios/create') }}">
+<button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+  class="fa fa-clock" aria-hidden="true"></i>Crear horario</button></a>
+  <br>
+  <br>
+  <div class="card shadow mb-1">
+            <div class="card-header py-1">
+                <h6 class="m-0 font-weight-bold text-primary">Horarios </h6>
+            </div>
+            
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table  table-striped shadow-lg mt-4" id="dataTableAgenda" width="100%" cellspacing="0">
+                        <thead class="bg-success text-white">
                                     <tr>
                                         <th>Hora de Entrada:</th>
 										<th>Hora  de Salida</th>
 
-                                        <th></th>
+                                        <th>Operaciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,11 +52,41 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
-                {!! $horarios->links() !!}
+
+                            
+                     @section('js')
+                    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+                    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+
+                    <script>
+                        $(document).ready(function() {
+                            $('#dataTableAgenda').DataTable({
+                                responsive: true,
+                                Width: false,
+
+                                "language": {
+                                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                                    "zeroRecords": "Nada encontrado - disculpa",
+                                    "info": "Mostrando la página _PAGE_ de _PAGES_",
+                                    "infoEmpty": "No records available",
+                                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                                    "search": "Buscar:",
+                                    "paginate": {
+                                        "next": "Siguiente",
+                                        "previous": "Anterior"
+                                    }
+
+                                }
+
+                            });
+                        });
+                    </script>
+                @endsection
             </div>
         </div>
     </div>
+</div>
 @endsection
