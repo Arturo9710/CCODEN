@@ -6,6 +6,7 @@ use App\Http\Controllers\ControllerAgenda;
 use App\Http\Controllers\ControllerEntrevista;
 use App\Http\Controllers\ControllerCurso;
 use App\Http\Controllers\ControllerProductividad;
+use App\Http\Controllers\ControllerAsistencia;
 /*
 |--------------------------------------------------------------------------
 | CONTROLADOR PARA LOS PERMISOS
@@ -117,3 +118,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 */
 
 Route::resource('horarios',App\Http\Controllers\HorarioController::class);
+
+
+/**Asistencia */
+
+
+
+Route::get('/index', [ControllerAsistencia::class,'index'])->name('asistencia.index');
+Route::get('/index2', [ControllerAsistencia::class,'index2'])->name('asistencia.index2');

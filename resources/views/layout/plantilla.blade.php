@@ -46,8 +46,8 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-                    REPORTES
-                </div>
+                REPORTES
+            </div>
             <li class="nav-item active">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -55,10 +55,10 @@
             </li>
 
             <hr class="sidebar-divider">
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    ADMINISTRACION
-                </div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                ADMINISTRACION
+            </div>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -69,20 +69,30 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                       
+
                         <a class="collapse-item" href="{{ url('socio') }}">Listado de Socios</a>
                         <a class="collapse-item" href="{{ url('horarios') }}">Horarios</a>
-                      
+
                     </div>
                 </div>
             </li>
 
-                
+
 
             <li class="nav-item">
                 <a class="nav-link" href={{ route('reporteagenda') }}>
                     <i class="fas fa-calendar-check"></i>
                     <span>Telefonia</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{ route('asistencia.index') }}>
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Asistencia</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href={{ route('asistencia.index2') }}>
+                    <i class="fas fa-calendar-check"></i>
+                    <span>lista asistencia</span></a>
             </li>
 
             <li class="nav-item">
@@ -92,7 +102,7 @@
             </li>
 
 
-            
+
 
 
             <li class="nav-item">
@@ -110,10 +120,10 @@
             </li>
             <hr class="sidebar-divider">
 
-<!-- Heading -->
-<div class="sidebar-heading">
-    IMPRIMIBLES
-</div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                IMPRIMIBLES
+            </div>
 
             <li class="nav-item">
                 <a class="nav-link" href={{ route('curso') }}>
@@ -150,49 +160,50 @@
                 </button>
 
                 <!-- Topbar Search -->
-            
+
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                   
+
 
                     <!-- Nav Item - Alerts -->
-                 
+
 
                     <!-- Nav Item - Messages -->
-                    
+
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
-                    @if(\Illuminate\Support\Facades\Auth::user())
-        <li class="dropdown">
-            <a href="#" data-toggle="dropdown"
-               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-               <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                <div class="d-sm-none d-lg-inline-block">
-                     {{\Illuminate\Support\Facades\Auth::user()->first_name}}</div>
-            </a>
+                    @if (\Illuminate\Support\Facades\Auth::user())
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <div class="d-sm-none d-lg-inline-block">
+                                    {{ \Illuminate\Support\Facades\Auth::user()->first_name }}</div>
+                            </a>
 
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title">
-                    Welcome, {{\Illuminate\Support\Facades\Auth::user()->name}}</div>
-                <a class="dropdown-item has-icon edit-profile" href="#" data-id="{{ \Auth::id() }}">
-                    <i class="fa fa-user"></i>Edit Profile</a>
-                <a class="dropdown-item has-icon" data-toggle="modal" data-target="#changePasswordModal" href="#" data-id="{{ \Auth::id() }}"><i
-                            class="fa fa-lock"> </i>Change Password</a>
-                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
-                   onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-                <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
-                    {{ csrf_field() }}
-                </form>
-            </div>
-        </li>
-   
-    @endif
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-title">
+                                    Welcome, {{ \Illuminate\Support\Facades\Auth::user()->name }}</div>
+                                <a class="dropdown-item has-icon edit-profile" href="#" data-id="{{ \Auth::id() }}">
+                                    <i class="fa fa-user"></i>Edit Profile</a>
+                                <a class="dropdown-item has-icon" data-toggle="modal" data-target="#changePasswordModal"
+                                    href="#" data-id="{{ \Auth::id() }}"><i class="fa fa-lock"> </i>Change
+                                    Password</a>
+                                <a href="{{ url('logout') }}" class="dropdown-item has-icon text-danger"
+                                    onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                    class="d-none">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
 
             </nav>
