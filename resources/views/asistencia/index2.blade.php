@@ -19,7 +19,7 @@ if ($conn->connect_error) {
     <!-- Font Awesome -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- <link rel="stylesheet" href="dist/css/AdminLTE.min.css"> -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -134,7 +134,8 @@ if ($conn->connect_error) {
         </div>
 
 
-        <?php //include 'includes/attendance_modal.php';
+        <?php 
+        include "php/includes/attendance_modal.php";
         ?>
     </div>
     <!-- jQuery 3 -->
@@ -163,7 +164,7 @@ if ($conn->connect_error) {
         function getRow(id) {
             $.ajax({
                 type: 'POST',
-                url: 'attendance_row.php',
+                url: 'php/attendance_row.php',
                 data: {
                     id: id
                 },
@@ -174,9 +175,9 @@ if ($conn->connect_error) {
                     $('#edit_time_in').val(response.time_in);
                     $('#edit_time_out').val(response.time_out);
                     $('#attid').val(response.attid);
-                    $('#employee_name').html(response.firstname + ' ' + response.lastname);
+                    $('#employee_name').html(response.nombre + ' ' + response.apellido_p);
                     $('#del_attid').val(response.attid);
-                    $('#del_employee_name').html(response.firstname + ' ' + response.lastname);
+                    $('#del_employee_name').html(response.nombre + ' ' + response.apellido_p);
                 }
             });
         }
