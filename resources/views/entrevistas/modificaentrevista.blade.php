@@ -62,7 +62,7 @@
                                     <p class = 'text-danger'>{{$errors->first('hora')}}</p>
                                     @endif
                                 </label>
-                                    <input type="datetime-local" name="hora" class="form-control form-control-user" id="hora"
+                                    <input type="time" name="hora" class="form-control form-control-user" id="hora"
                                     value="{{$entrevista->hora}}"   placeholder="Hora">
                                 </div>
                                 <div class="form-group">

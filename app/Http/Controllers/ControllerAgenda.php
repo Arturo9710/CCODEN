@@ -55,7 +55,7 @@ class ControllerAgenda extends Controller
         $agenda->hora         = $request->hora;
         $agenda->publicidad   = $request->publicidad;
         $agenda->contesto     = $request->contesto;
-        $agenda->empleado_id  = 22;
+        $agenda->empleado_id  = $request->empleado_id;
 
         $agenda->save();
 
@@ -103,7 +103,7 @@ class ControllerAgenda extends Controller
 
         
         $this->validate($request,[
-            'seguimiento' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
+            
             'alias_clave' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'nombre' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
             'apellido_p' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -132,7 +132,7 @@ class ControllerAgenda extends Controller
             $agendas->hora = $request->hora;
             $agendas->publicidad = $request->publicidad;
             $agendas->contesto = $request->contesto;
-            $agendas->empleado_id = 22;
+            $agendas->empleado_id = $request->empleado_id;
             $agendas->save();
             Session::flash('mensaje',"La agenda $request->nombre
             ha sido modificado correctaemente");

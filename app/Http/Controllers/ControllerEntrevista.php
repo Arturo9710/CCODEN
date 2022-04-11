@@ -141,7 +141,7 @@ class ControllerEntrevista extends Controller
         $entrevista->hora= $request->hora;
         $entrevista->oficina= $request->oficina;
         $entrevista->status= $request->status;
-        $entrevista->agenda_id= 1;
+        $entrevista->agenda_id= $request->agenda_id;
         $entrevista->save();
 
         Session::flash('mensaje',"La Entrevista
