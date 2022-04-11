@@ -41,7 +41,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nombre Agenda</th>
-                                    <th>Edad</th>
+                                   
                                     <th>Citado</th>
                                     <th>Publicidad</th>
                                     <th>Hora</th>
@@ -55,7 +55,7 @@
                                     <tr>
                                         <td>{{ $entrevista->id_entrevista }}</td>
                                         <td>{{ $entrevista->nombre_agenda }}</td>
-                                        <td>{{ $entrevista->edad }}</td>
+                                       
                                         <td>{{ $entrevista->citado }}</td>
                                         <td>{{ $entrevista->publicidad }}</td>
                                         <td>{{ $entrevista->hora }}</td>
@@ -66,26 +66,18 @@
                                             @can('editar-entrevista')
                                                 <a
                                                     href="{{ route('modificaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                                    <button type="button" class="btn btn-info">editar</button>
+                                                    <button type="button" class="btn btn-info">Editar</button>
                                                 </a>
                                             @endcan
-                                            @if ($entrevista->deleted_at)
-                                                <a
-                                                    href="{{ route('activarentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                                    <button type="button" class="btn btn-warning">Activar</button>
-                                                </a>
+                                            
+                                              
                                                 @can('eliminar-entrevista')
-                                                    <a
-                                                        href="{{ route('borraentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                                        <button type="button" class="btn btn-secondary">Borrar</button>
-                                                    </a>
-                                                @endcan
-                                            @else
-                                                <a
+                                                 <a
                                                     href="{{ route('desactivaentrevista', ['id_entrevista' => $entrevista->id_entrevista]) }}">
-                                                    <button type="button" class="btn btn-danger">Desactiva</button>
+                                                    <button type="button" class="btn btn-danger" id="btnElimina"  data-id="{{ $entrevista->id_entrevista }}"><i class="fas fa-user-times"></i>ELIMINAR</button>
                                                 </a>
-                                            @endif
+                                                @endcan
+                                          
                                         </td>
                                     </tr>
                                 @endforeach

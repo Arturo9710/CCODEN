@@ -55,7 +55,7 @@ class ControllerAgenda extends Controller
         $agenda->hora         = $request->hora;
         $agenda->publicidad   = $request->publicidad;
         $agenda->contesto     = $request->contesto;
-        $agenda->empleado_id  = $request->empleado_id;
+     
 
         $agenda->save();
 
@@ -73,6 +73,7 @@ class ControllerAgenda extends Controller
         'telefono',
         'fecha',
         'hora',
+        'publicidad',
         'deleted_at'])
     ->orderBy('agendas.id_agenda')
     ->where('deleted_at','=',null)
@@ -95,13 +96,15 @@ class ControllerAgenda extends Controller
       $agenda = agenda::withTrashed()->select('id_agenda','seguimiento','alias','nombre','apellido_p','apellido_m','telefono','fecha','hora','publicidad','contesto')
       ->where('id_agenda',$id_agenda)
       ->get();
+     
       return view ('agenda.modificaagenda')
       ->with('agenda',$agenda[0]);
       }
+      //echo $agendas;
 
     public function guardacambiosAgenda(Request $request){
-
-        
+    
+       
         $this->validate($request,[
             
             'alias_clave' => 'required|regex:/^[A-Z][A-Z,a-z, ,á,é,í,ó,ú,]+$/',
@@ -116,26 +119,30 @@ class ControllerAgenda extends Controller
             'contesto' => 'required',
             
         ]);
-        
+           
         
         $agendas = agenda::withTrashed()->find($request->id_agenda);
+        
+  
+      
+        $agendas->id_agenda= $request->id_agenda;
+        $agendas->seguimiento= $request->seguimiento;
+        $agendas->alias = $request->alias_clave;
+        $agendas->nombre = $request->nombre;
+        $agendas->apellido_p =$request->apellido_p;
+        $agendas->apellido_m = $request->apellido_m;
+        $agendas->telefono = $request->telefono;
+        $agendas->edad = $request->edad;
+        $agendas->fecha = $request->fecha;
+        $agendas->hora = $request->hora;
+        $agendas->publicidad = $request->publicidad;
+        $agendas->contesto = $request->contesto;
+        $agendas->empleado_id = $request->empleado_id;
+        $agendas->save();
        
-            $agendas->id_agenda= $request->id_agenda;
-            $agendas->seguimiento= $request->seguimiento;
-            $agendas->alias = $request->alias_clave;
-            $agendas->nombre = $request->nombre;
-            $agendas->apellido_p =$request->apellido_p;
-            $agendas->apellido_m = $request->apellido_m;
-            $agendas->telefono = $request->telefono;
-            $agendas->edad = $request->edad;
-            $agendas->fecha = $request->fecha;
-            $agendas->hora = $request->hora;
-            $agendas->publicidad = $request->publicidad;
-            $agendas->contesto = $request->contesto;
-            $agendas->empleado_id = $request->empleado_id;
-            $agendas->save();
-            Session::flash('mensaje',"La agenda $request->nombre
-            ha sido modificado correctaemente");
+       
+        Session::flash('mensaje',"La agenda $request->nombre
+        ha sido modificado correctaemente");
             return redirect()->route('reporteagenda');
         }
     }
