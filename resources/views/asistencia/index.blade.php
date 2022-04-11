@@ -31,6 +31,11 @@
     .bold {
         font-weight: bold;
     }
+    .login-box{
+        width:80%;
+        margin: auto;
+        margin-top:5%
+    }
 
 </style>
 
