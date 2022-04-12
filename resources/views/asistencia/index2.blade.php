@@ -43,7 +43,11 @@ if ($conn->connect_error) {
         .bold {
             font-weight: bold;
         }
-
+        .content-wrapper{
+            width:80%;
+            margin: auto;
+            margin-top:5%
+        }
     </style>
 </head>
 

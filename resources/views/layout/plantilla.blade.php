@@ -46,7 +46,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
-<<<<<<< HEAD
                 REPORTES
             </div>
             <li class="nav-item active">
@@ -54,15 +53,6 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Panel de control</span></a>
             </li>
-=======
-                    REPORTES
-                </div>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Panel de control</span></a>
-                </li>
->>>>>>> 0707e35ecd82482e8fcd159675e7e15ac7703ca6
 
             <hr class="sidebar-divider">
             <!-- Heading -->

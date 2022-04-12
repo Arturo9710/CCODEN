@@ -57,5 +57,5 @@
 	}
 
 	// header('location:attendance.php');
-	header('location:http://localhost:8000/ccoden/public/index2');
+	header('location:http://localhost/ccoden/public/index2');
 ?>

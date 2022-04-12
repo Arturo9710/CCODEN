@@ -83,8 +83,19 @@ class ControllerEntrevista extends Controller
     }
 
     public function reporteentrevista(){
-        $entrevista = entrevista::withTrashed()->select(['id_entrevista','nombre_agenda','edad',
-        'citado','publicidad','hora','oficina','status','deleted_at'])
+        $entrevista = entrevista::withTrashed()->select([
+            'id_entrevista',
+            'nombre_agenda',
+            'edad',
+            'citado',
+            'publicidad',
+            'hora',
+            'oficina',
+            'status',
+            'deleted_at'
+            ])
+            ->orderBy('entrevistas.id_entrevista')
+            ->where('deleted_at','=',null)
         ->get();
         return view('entrevistas.reporteentrevista')->with('entrevista',$entrevista);
     }
@@ -96,6 +107,7 @@ class ControllerEntrevista extends Controller
         ha sido desactivada correctamente");
         return redirect()->route('reporteentrevista');
     }
+
 
     public function activarentrevista($id_entrevista){
         $entrevistas = entrevista::withTrashed()->where('id_entrevista',$id_entrevista)->restore();
@@ -141,7 +153,7 @@ class ControllerEntrevista extends Controller
         $entrevista->hora= $request->hora;
         $entrevista->oficina= $request->oficina;
         $entrevista->status= $request->status;
-        $entrevista->agenda_id= 1;
+        $entrevista->agenda_id= $request->agenda_id;
         $entrevista->save();
 
         Session::flash('mensaje',"La Entrevista
