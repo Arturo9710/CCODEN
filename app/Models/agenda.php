@@ -13,7 +13,7 @@ class agenda extends Model
 
     protected $primaryKey = 'id_agenda';
     protected $fillable =[
-        'id_ageda',
+        'id_agenda',
         'seguimiento',
         'alias',
         'nombre','apellido_p',

@@ -10,13 +10,13 @@
 @section('content')
 
     <div class="container">
-        <h1>Listado Telefonia</h1>
+        <h1>LISTADO TELEFONIA</h1>
         <br>
         @can('crear-agenda')
             <a href="{{ route('agenda') }}">
 
                 <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                        class="fa fa-phone-square" aria-hidden="true"></i> Agendar cita</button>
+                        class="fa fa-phone-square" aria-hidden="true"></i> Agregar Nuevo</button>
             </a>
         @endcan
         <br>
